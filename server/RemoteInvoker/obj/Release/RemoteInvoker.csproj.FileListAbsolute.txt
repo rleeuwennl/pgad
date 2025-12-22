@@ -1,0 +1,3 @@
+c:\Projects\PPE\ppe\RemoteInvoker\obj\Release\RemoteInvoker.csproj.AssemblyReference.cache
+c:\Projects\PPE\ppe\RemoteInvoker\obj\Release\Genius2.Properties.Resources.resources
+c:\Projects\PPE\ppe\RemoteInvoker\obj\Release\RemoteInvoker.csproj.GenerateResource.cache

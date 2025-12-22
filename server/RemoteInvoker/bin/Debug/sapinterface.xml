@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>sapinterface</name>
+    </assembly>
+    <members>
+        <member name="T:SapInterfaces.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SapInterfaces.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SapInterfaces.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SapInterfaces.Properties.Resources.DocUploadSoapRequestEnvelop">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+            &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:sap-com:document:sap:soap:functions:mc-style&quot;&gt;
+               &lt;soapenv:Header/&gt;
+               &lt;soapenv:Body&gt;
+                  &lt;urn:_-seal_-zladWsDmLoaderCall&gt;
+                     &lt;IInputData&gt;
+                        &lt;!--Zero or more repetitions:--&gt;
+            &lt;!-- &lt;_BAse64&gt;xBase64 data &lt;/_base64&gt; --&gt; 
+                        &lt;item&gt;
+                           &lt;Name&gt;_BASE64CONTENT&lt;/Name&gt;
+                           &lt;Value&gt;$_BASE64CONTENT$&lt;/Value&gt;             
+                     &lt;/ite [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:SapInterfaces.Properties.Resources.GetXpSoapRequestEnvelop">
+            <summary>
+              Looks up a localized string similar to &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:sap-com:document:sap:rfc:functions&quot;&gt;
+             &lt;soapenv:Header/&gt;
+             &lt;soapenv:Body&gt;
+               &lt;urn:_-SEALC_-SWK_DMS_KPRO_URL_GET&gt;
+                 &lt;I_CLASSNO&gt;&lt;/I_CLASSNO&gt;
+                 &lt;I_CLASSTYPE&gt;&lt;/I_CLASSTYPE&gt;
+                 &lt;I_DAPPL&gt;PDF&lt;/I_DAPPL&gt;
+                 &lt;I_DOKAR&gt;$I_DOKAR$&lt;/I_DOKAR&gt;
+                 &lt;I_DOKST&gt;$I_DOKST$&lt;/I_DOKST&gt;
+                 &lt;I_MATNR&gt;$I_MATNR$&lt;/I_MATNR&gt;
+                 &lt;I_RES4&gt;&lt;/I_RES4&gt;
+                 &lt;I_SUBTYPE&gt;&lt;/I_SUBTYPE&gt;
+                 &lt;T_CLASS_SELECTION&gt;
+                   &lt;!--Zero [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:SapInterfaces.Properties.Resources.TestXPdoc">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="T:SapInterfaces.SapDownloader">
+            <summary>
+            The SAP uploader class.
+            </summary>
+        </member>
+        <member name="M:SapInterfaces.SapDownloader.CreateSOAPWebRequest">
+            <summary>
+            Creates a SOAP web request.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SapInterfaces.SapDownloader.DownloadXpDocument(System.String,System.String)">
+            <summary>
+            Downloads the XP document for given article number.
+            Saves the XP document (PDF) to given location.
+            </summary>
+            <param name="articleNumber">The article number.</param>
+            <param name="fileName">The file name to save the file in (should be PDF).</param>
+            <returns></returns>
+        </member>
+        <member name="M:SapInterfaces.SapDownloader.DownloadXpDoc(System.String,System.String)">
+            <summary>
+            Downloads the XP documentation related to spreader serial number from SAP.
+            </summary>
+            <param name="spreaderSerialNumber">The spreader serial number.</param>
+            <param name="pdfName">The pdf file name.</param>
+            <returns>The pdf file name.</returns>
+        </member>
+        <member name="T:SapInterfaces.SapInterface">
+            <summary>
+            The SAP interface.
+            </summary>
+        </member>
+        <member name="M:SapInterfaces.SapInterface.SetTagValue(System.String@,System.String,System.String)">
+            <summary>
+            Sets a tag value in a string.
+            </summary>
+            <param name="soapEnvelop">The SOAP envelope.</param>
+            <param name="tagName">The tag name.</param>
+            <param name="tagValue">The tag value.</param>
+        </member>
+        <member name="M:SapInterfaces.SapInterface.GetXpInformation(System.String)">
+            <summary>
+            Connects to SAP and retrieves the XP information.
+            </summary>
+            <param name="spreaderSerialNumber">The serial number of the spreader.</param>
+        </member>
+        <member name="T:SapInterfaces.SapUploader">
+            <summary>
+            The SAP uploader class.
+            </summary>
+        </member>
+        <member name="M:SapInterfaces.SapUploader.CreateSOAPWebRequest">
+            <summary>
+            Creates a SOAP web request.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SapInterfaces.SapUploader.EncodeFileToBase64String(System.String)">
+            <summary>
+            Encodes a file in BASE64 string format.
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SapInterfaces.SapUploader.UploadPdf(System.String,System.String,System.String)">
+            <summary>
+            Uploads the file to SAP.
+            </summary>
+            <param name="spreaderSerialNumber">The spreader serial number.</param>
+            <param name="fileName">The file name to upload.</param>
+            <param name="prefix">The prefix for the file name and desription. Should be 'TESTREPORT' for the test report, and 'ELECTRIC_SCHEME' for the electric scheme.</param>
+        </member>
+    </members>
+</doc>

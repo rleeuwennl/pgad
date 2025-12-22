@@ -1,0 +1,1209 @@
+**** Trace file opened at 2024-04-26 16:07:32 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 16:07:32.213
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:07:49.153
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-04-26 16:16:40 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 16:16:40.919
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:17:45.945
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:18:26.974
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:18:47.899
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-04-26 16:22:41 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 16:22:41.606
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:22:45.644
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-04-26 16:34:03 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 16:34:03.269
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:34:17.593
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:36:20.894
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:36:21.438
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-04-26 16:37:57 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 16:37:57.874
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 16:37:58.518
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-04-26 20:03:47 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 20:03:47.788
+SAP.Middleware.Connector.RfcTypeConversionException: FIELD POSNR of STRUCTURE ZEOL_BOM (GETTER): cannot convert CHAR4 into Int32 ---> SAP.Middleware.Connector.RfcTypeConversionException: CHAR cannot be converted into int
+   at SAP.Middleware.Connector.RfcScalarMetadata.GetInt(Object& value)
+   at SAP.Middleware.Connector.RfcDataContainer`1.GetInt(Int32 index)
+   --- End of inner exception stack trace ---
+   at SAP.Middleware.Connector.RfcDataContainer`1.GetInt(Int32 index)
+>> Error entry 2024-04-26 20:04:07.262
+SAP.Middleware.Connector.RfcTypeConversionException: FIELD POSNR of STRUCTURE ZEOL_BOM (GETTER): cannot convert CHAR4 into Int32 ---> SAP.Middleware.Connector.RfcTypeConversionException: CHAR cannot be converted into int
+   at SAP.Middleware.Connector.RfcScalarMetadata.GetInt(Object& value)
+   at SAP.Middleware.Connector.RfcDataContainer`1.GetInt(Int32 index)
+   --- End of inner exception stack trace ---
+   at SAP.Middleware.Connector.RfcDataContainer`1.GetInt(Int32 index)
+**** Trace file opened at 2024-04-26 21:06:00 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 21:06:00.790
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-04-26 22:24:09 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-04-26 22:24:09.618
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 23:12:09.280
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-26 23:14:37.057
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 08:08:41.431
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 09:40:09.968
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 13:22:31.190
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 15:55:42.067
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 15:57:56.518
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 15:59:13.673
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 18:12:59.608
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-29 20:04:34.822
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-30 12:13:43.936
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-30 19:42:13.288
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-04-30 20:18:02.381
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-02 13:30:34.037
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-05-06 11:48:33 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-05-06 11:48:33.165
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-06 11:48:43.955
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-06 11:48:45.611
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 08:49:55.616
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 08:50:01.026
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 08:50:01.136
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 22:48:49.332
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 22:48:54.602
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 22:48:54.696
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 22:53:50.054
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 22:53:55.388
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 22:53:55.466
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-05-07 23:10:47 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-05-07 23:10:47.738
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 23:10:55.042
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-07 23:10:55.152
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:48:51.738
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:48:59.055
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:48:59.149
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:49:01.304
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:49:01.320
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-05-08 20:57:06 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-05-08 20:57:06.951
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:58:34.055
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:59:01.580
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:59:03.813
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 20:59:04.797
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-05-08 21:00:45 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-05-08 21:00:45.437
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:00:53.143
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:00:53.261
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:00:54.580
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:00:54.602
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-05-08 21:05:56 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-05-08 21:05:56.911
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:06:05.246
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:06:05.351
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:06:06.748
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:06:06.770
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-05-08 21:09:52 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-05-08 21:09:52.083
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:09:59.926
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:10:00.047
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:10:01.384
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-05-08 21:10:01.407
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-07-24 11:56:20 (UTC+02:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-07-24 11:56:20.104
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-07-30 10:50:01 (UTC+02:00 W. Europe Daylight Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-07-30 10:50:01.116
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-08-09 12:12:46 (UTC+02:00 W. Europe Daylight Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\projects\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\projects\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-08-09 12:12:46.547
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-08-27 10:12:55.129
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-08-28 11:01:00.888
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-08-28 11:51:16.446
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-08-29 13:15:40.822
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-09-06 18:37:33.435
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-09-09 11:54:25.444
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-09-09 11:54:32.210
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-09-09 13:56:19.174
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-10-16 08:43:22.693
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-11-01 13:30:25.708
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2024-12-10 09:39:41 (UTC+01:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2024-12-10 09:39:41.702
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-12-10 09:40:08.598
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-12-10 09:43:28.480
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: PARTS_LIST_MISSING
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2024-12-10 11:22:39.569
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2025-01-10 09:32:57 (UTC+01:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2025-01-10 09:32:57.883
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-01-12 18:04:46.133
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-01-12 18:06:40.753
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-01-13 08:28:17.854
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2025-01-20 19:38:45 (UTC+01:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2025-01-20 19:38:45.062
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-01-22 14:30:45.935
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2025-02-10 07:40:08 (UTC+01:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2025-02-10 07:40:08.142
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2025-02-18 13:49:46 (UTC+01:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2025-02-18 13:49:46.897
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2025-03-03 15:36:37 (UTC+01:00 W. Europe Standard Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2025-03-03 15:36:37.811
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+**** Trace file opened at 2025-04-07 14:59:25 (UTC+02:00 W. Europe Daylight Time)
+
+SAP .NET Connector 3.0 with file version 3.0.6.0 running on 32-bit .NET Framework 4.0.30319.42000
+Program: C:\share\ppe\RemoteInvoker\bin\Debug\RemoteInvoker.exe
+Working directory: C:\share\ppe\RemoteInvoker\bin\Debug
+Operating system:  Enterprise 64-bit 
+Processor: 2x AMD64 (or x64)
+SAP release: 720, Kernel release: 720, Kernel patch level: 200
+Hostname: NLHLELEC01, IP address: 10.41.3.22, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2025-04-07 14:59:25.141
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-04-22 11:50:13.041
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-06-03 10:38:37.158
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-06-03 13:06:14.797
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+>> Error entry 2025-06-10 20:19:09.945
+NAME=unknown USER=EOL_RFC PASSWD=*secret* CLIENT=030 LANG=NL ASHOST=10.41.5.18 SYSNR=00 SYSID=PRD
+SAP.Middleware.Connector.RfcAbapException: SERIAL_UNKNOWN
+   at SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   at SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   at SAP.Middleware.Connector.RfcFunction.RfcDeserialize(RfcConnection conn, IRfcIOStream stream)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn, IRfcIOStream stream, RFCID rid)
+   at SAP.Middleware.Connector.RfcFunction.RfcCallReceive(RfcConnection conn)
+   at SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
