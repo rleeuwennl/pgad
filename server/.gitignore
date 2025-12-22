@@ -1,0 +1,57 @@
+*.suo
+*.user
+Diagram Creator/DiagramCreator/bin/
+Diagram Creator/DiagramCreator/obj/
+RemoteInvoker/obj/
+RemoteInvoker/bin/
+ErrorInfo/ErrorInfo/bin/
+ErrorInfo/ErrorInfo/obj/
+PpeService/obj/
+PpeService/bin/
+RemoteInvoker/packages/
+DiagramCreator/DiagramCreator/obj/
+DiagramCreator/DiagramCreator/bin/
+DiagramCreator/.vs/
+CheckPpeService/CheckPpeService/bin/
+CheckPpeService/CheckPpeService/obj/
+/RemoteInvoker/ascs-Develop.html
+/RemoteInvoker/ascs-EOL@develop.html
+/RemoteInvoker/ascs-Season-2023.html
+/RemoteInvoker/ascs-Season-2024.html
+/RemoteInvoker/cem-master.html
+/RemoteInvoker/Errors and Warnings for streetwasher.html
+/RemoteInvoker/Errors and Warnings for sweeper.html
+/RemoteInvoker/ErrorsSpreader.html
+/RemoteInvoker/ErrorsStreetwasher.html
+/RemoteInvoker/ErrorsSweeper.html
+/RemoteInvoker/extensionmodule-master.html
+/RemoteInvoker/jc-master.html
+/RemoteInvoker/jc-Season2023.html
+/RemoteInvoker/jc-Season2024.html
+/RemoteInvoker/pipi-master.html
+/RemoteInvoker/pst-master.html
+/RemoteInvoker/sofon-ConfigurationEditor@master.html
+/RemoteInvoker/sofon-master.html
+/RemoteInvoker/sofon-Model15.html
+/RemoteInvoker/wasa-master.html
+/Drawing_Search/Drawing_Search/obj/Debug
+/Drawing_Search/Drawing_Search/obj/Release/.NETFramework,Version=v4.5.AssemblyAttributes.vb
+/Drawing_Search/Drawing_Search/obj/Release/Drawing_Search.vbproj.AssemblyReference.cache
+/PpeService/.vs
+/RemoteInvoker/.vs
+/RemoteInvoker/ssl_old
+/SapInterface/bin
+/SapInterface/obj
+/SapInterface/TestSAP/bin/Debug
+/SapInterface/TestSAP/obj/Debug
+/RemoteInvoker/ErrorsSpreader.html
+/packages
+/SapInterface/bin/Debug/sapinterface.dll
+/.vs/PpeWebService/FileContentIndex
+/.vs/PpeWebService/v17
+CheckPpeService/.vs/
+CheckPpeService/packages/
+/.vs/ppe/v17
+Log/
+DiagramCreator/DiagramCreator/.vs/
+SapInterface/.vs/

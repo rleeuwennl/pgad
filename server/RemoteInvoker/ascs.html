@@ -1,0 +1,295 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!(c) AEBI-Schmidt by Robbert van Leeuwen">
+<html>
+<head>
+    <title>AEBI-Schmidt online ASCS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <script language="JavaScript" type="text/JavaScript">
+
+
+        var posx; var posy;
+        var mousex; var mousey;
+        var count = 0;
+        var refreshPending = false;
+        var serial="";
+
+
+        function RefreshScreen() {
+			if (refreshPending) {
+				return;
+			}
+
+			if(serial!="") {
+				refreshPending = true;
+				var oReq = new XMLHttpRequest();
+				oReq.open("GET", '/api/PpeWebService?cmd=Screen&arg=' + serial + ":" + count, true);
+				oReq.responseType = "blob";
+
+				oReq.onload = function (oEvent) {
+					if (oReq.readyState === 4) {
+						if (oReq.status === 200) {
+							var blob = oReq.response;
+							var urlCreator = window.URL || window.webkitURL;
+							var imageUrl = urlCreator.createObjectURL(blob);
+								document.getElementById('screenimage').src = imageUrl;
+						} else {
+							console.error(oReq.statusText);
+						}
+					}
+
+					refreshPending = false;
+
+				};
+
+				oReq.send();
+			}
+        }
+
+
+        function Ar3Selected() {
+			readAr3(uploadAr3.files[0]);
+        }
+
+
+        function capmousedown(e) {
+			console.log("mousedown " + e.button);
+			showP(1);
+			RefreshScreen();
+        }
+
+
+        function capmouseup(e) {
+			console.log("mouseup " + e.button);
+			showP(0);
+			RefreshScreen();
+        }
+
+        function mousewheel(e) {
+			// cross-browser wheel delta
+			var e = window.event || e; // old IE support
+			var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+			console.log("mousewheel " + delta);
+			xhttp = new XMLHttpRequest();
+			var wheelUrl = "/api/PpeWebService?cmd=Wheel&serial=" + serial + "&dir=" + delta;
+			console.log(wheelUrl);
+			xhttp.open("GET", wheelUrl, true);
+			xhttp.send();
+			RefreshScreen();
+        }
+
+        function capmouse(e) {
+			// captures the mouse position
+			posx = 0; posy = 0;
+			if (!e) {
+				var e = window.event;
+			}
+
+			if (e.pageX || e.pageY) {
+				posx = e.pageX;
+				posy = e.pageY;
+			}
+			else {
+				if (e.clientX || e.clientY) {
+					posx = e.clientX;
+					posy = e.clientY;
+				}
+			}
+        }
+
+
+        function showP(clickKind) {
+			var screenImage = document.getElementById("screenimage");
+			var rect = screenImage.getBoundingClientRect();
+			if (posy > rect.top) {
+				xhttp = new XMLHttpRequest();
+				mousex = (posx/0.9) - (33 + 30-10);
+				mousey = (posy/0.9) - (23 + 60 + 55-80);
+
+				var mouseUrl = "/api/PpeWebService?cmd=Click&serial=" + serial + "&x=" + mousex + "&y=" + mousey + "&clickKind=" + clickKind;
+				console.log(mouseUrl);
+				xhttp.open("GET", mouseUrl, true);
+				xhttp.send();
+			}
+        }
+
+        function readAr3(file) {
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function () {
+				//console.log(reader.result);
+				ar3Uploader(reader.result);
+			};
+			reader.onerror = function (error) {
+				console.log('Error: ', error);
+			};
+        }
+
+
+        function ar3Uploader(ar3Data) {
+			var startUrl = "/api/PpeWebService/PostData?cmd=uploadar3";
+			let req = new XMLHttpRequest();
+			req.open("POST", startUrl);
+			req.send(uploadAr3.files[0]);
+			uploadAr3.value=null;
+        }
+
+
+        
+		window.onload = (event) => {
+		  initMachine();
+		};
+		
+		
+		document.addEventListener('keydown', (event) => {
+		  var name = event.key;
+		  var code = event.code;
+		  // Alert the key name and key code on keydown
+		  var startUrl = "/api/PpeWebService/PostData?cmd=keydown";
+			let req = new XMLHttpRequest();
+			req.open("POST", startUrl);
+			req.send(serial+','+name);
+			
+		}, false);
+
+		function initMachine() {
+			var interval = setInterval(RefreshScreen, 500);
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			serial=urlParams.get('serial');
+			console.log('SERIAL: ', serial);
+			
+			var startUrl = "/api/PpeWebService/PostData?cmd=startserial";
+			let req = new XMLHttpRequest();
+			req.open("POST", startUrl);
+			req.send(serial);
+		}
+
+    </script>
+    <style type="text/css">
+        body {
+            zoom: 0.9;
+        }
+
+        .div1 {
+            position: absolute;
+            top: 0px;
+            left: 30px;
+            visibility: visible;
+            z-index: 5
+        }
+
+        .div3 {
+            position: absolute;
+            visibility: visible;
+            z-index: 10;
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: 900;
+            color: black;
+        }
+
+        .div4 {
+            top: 0px;
+            left: 100px;
+            position: absolute;
+            visibility: visible;
+            z-index: 10;
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: 900;
+            color: black;
+        }
+
+
+        .logo {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .screen {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+        }
+    </style>
+    <style>
+
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: Arial;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+
+		.labelClass {
+            
+            border: none;
+            color: green;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+		
+        .button1 {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        input[type=text], select {
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+<div id="div4">
+    <img src="https://machines.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=ascs_agent_logo.png" alt="W3Schools.com">
+
+    <button class="button button2" onclick="history.back()">Back</button>
+    <label>Select an ar3 file to upload</label>
+    <label for="uploadAr3">
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+        <input type="file" id="uploadAr3" style="display:none" onchange="Ar3Selected()" accept=".ar3">
+    </label>
+    <!-- <label id="startLabel" class="labelClass"> </label> -->
+</div>
+
+<div id="div1" class="div1">
+    <img class="screen" id="screenimage">
+</div>
+<body onmousemove="capmouse(event)" onmousedown="capmousedown(event)" onmouseup="capmouseup(event)" onmousewheel="mousewheel(event)">
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+pipelines:
+  default:
+      - step:
+          runs-on:
+            - self.hosted
+            - windows
+            - build.desktop
+          name: 'Build'
+          max-time: 15
+          script:
+            - .\Scripts\Notify_PipelineStateChanged.ps1 $env:DASHBOARD_API_CALL $env:BITBUCKET_BRANCH $env:BITBUCKET_PIPELINE_UUID $env:BITBUCKET_REPO_SLUG
+            - .\Scripts\Build.ps1
+          after-script:
+            - .\Scripts\Notify_PipelineStateChanged.ps1 $env:DASHBOARD_API_CALL $env:BITBUCKET_BRANCH $env:BITBUCKET_PIPELINE_UUID $env:BITBUCKET_REPO_SLUG $env:BITBUCKET_STEP_UUID -WaitForFinalStatus $true
+          artifacts:
+            - CheckPpeService/CheckPpeService/bin/**
+      - step:
+          runs-on:
+            - self.hosted
+            - windows
+            - build.desktop
+          name: 'Deploy'
+          deployment: production
+          max-time: 15
+          script:
+            - .\Scripts\Notify_PipelineStateChanged.ps1 $env:DASHBOARD_API_CALL $env:BITBUCKET_BRANCH $env:BITBUCKET_PIPELINE_UUID $env:BITBUCKET_REPO_SLUG
+            - .\Scripts\Deploy\Deploy_PpeServiceChecker.ps1
+          after-script:
+            - .\Scripts\Notify_PipelineStateChanged.ps1 $env:DASHBOARD_API_CALL $env:BITBUCKET_BRANCH $env:BITBUCKET_PIPELINE_UUID $env:BITBUCKET_REPO_SLUG $env:BITBUCKET_STEP_UUID -WaitForFinalStatus $true
+  custom:
+      check-ppe-service:
+        - step:
+              runs-on:
+                - self.hosted
+                - windows
+                - ppe.onlinecheck
+              name: 'Check for PPE service to be online'
+              max-time: 15
+              script:
+                - .\Scripts\Notify_PipelineStateChanged.ps1 $env:DASHBOARD_API_CALL $env:BITBUCKET_BRANCH $env:BITBUCKET_PIPELINE_UUID $env:BITBUCKET_REPO_SLUG
+                - .\Scripts\CheckPpeService.ps1
+              after-script:
+                - .\Scripts\Notify_PipelineStateChanged.ps1 $env:DASHBOARD_API_CALL $env:BITBUCKET_BRANCH $env:BITBUCKET_PIPELINE_UUID $env:BITBUCKET_REPO_SLUG $env:BITBUCKET_STEP_UUID -WaitForFinalStatus $true

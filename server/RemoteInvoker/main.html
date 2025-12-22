@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <style>
+
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: Arial;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+
+        .button1 {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        input[type=text], select {
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+
+    <img src="https://machines.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=ppewebservice.png" alt="W3Schools.com">
+
+    <h1>Get machine information</h1>
+
+    <p>Enter the serialnumber of the spreader and press get PST3, view testreport or get schematics.</p>
+
+    <input type="text" id="serialNumber" type="text" value="Y3B10960" placeholder="Serial number of spreader.." />
+    <button class="button button2" onclick="GetPst3()">Get PST3</button>
+    <button class="button button2" onclick="ViewSchematics()">Get schematics </button>
+    <button class="button button2" onclick="ViewTestReport()">View testreport </button>
+    <button class="button button2" onclick="ViewInfo()">View information </button>
+    <button class="button button2" onclick="StartASCS()">Start ASCS</button>
+    <button class="button button2" onclick="ViewBom()">Get BOM</button>
+    <button class="button button2" onclick="ViewXml()">Get XML</button>
+    <button class="button button2" onclick="OperatingManual()">Operating manual</button>
+    <button class="button button2" onclick="Spareparts()">Spare parts</button>
+    <br>
+    <br>
+    <br>
+    <button class="button button2" onclick="ShowSpreaderErrors()">Show all spreader errors</button>
+    <button class="button button2" onclick="ShowSk660Errors()">Show all SK660 errors</button>
+    <button class="button button2" onclick="ShowStreetWasherErrors()">Show all streetwasher errors</button>
+    <br>
+    <button class="button button2" onclick="ShowMachineWithInfoWare()">Show all machines with Infoware maps</button>
+    <br>
+    <style>
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 1%;
+            height: 30px;
+            background-color: #4CAF50;
+            #barText
+
+        {
+            width: 100%;
+        }
+    </style>
+
+    <div id="barText"></div>
+
+    <div id="myProgress">
+        <div id="myBar"></div>
+
+    </div>
+
+
+    <script>
+
+        function ShowSpreaderErrors() {
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=ErrorsSpreader";
+        }
+
+
+        function ShowSk660Errors() {
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=ErrorsSweeper";
+        }
+
+
+        function ShowStreetWasherErrors() {
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=ErrorsStreetwasher";
+        }
+
+        function ShowMachineWithInfoWare() {
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=CheckRouteManagerLicenses&arg=overview";
+        }
+
+        function StartASCS() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=ascs&serial=" + serial;
+        }
+
+        function ViewSchematics() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewSchematics&arg=" + serial;
+        }
+
+        function OperatingManual() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewOpManual&arg=" + serial;
+        }
+
+        function Spareparts() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewSpareParts&arg=" + serial;
+        }
+
+        function ViewInfo() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewInfo&arg=" + serial;
+        }
+
+        function ViewBom() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewBom&arg=" + serial;
+        }
+
+        function ViewXml() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewXml&arg=" + serial;
+        }
+
+        function ViewTestReport() {
+            var serial = document.getElementById("serialNumber").value;
+            window.location.href = "https://machines.aebi-schmidt.com/api/PpeWebService?cmd=ViewTestReport&arg=" + serial;
+        }
+
+        function downloadURI(uri, name) {
+            var link = document.createElement("a");
+            // If you don't know the name or want to use
+            // the webserver default set name = ''
+            link.setAttribute('download', name);
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        }
+
+        function GetPst3() {
+            var serial = document.getElementById("serialNumber").value;
+            DownLoadIt("https://machines.aebi-schmidt.com/api/PpeWebService?cmd=GeneratePst3&arg=" + serial, serial + ".pst3");
+        }
+
+
+
+        function ProgressBar(width) {
+            var elem = document.getElementById("myBar");
+            elem.style.width = width + "%";
+
+            elem = document.getElementById("myProgress");
+            if (width < 100) {
+                elem.style.display = "block";
+
+            }
+            else {
+                elem.style.display = "none";
+
+                elem = document.getElementById("barText");
+                elem.innerHTML = "";
+            }
+        }
+
+
+
+        window.addEventListener('load', (event) => {
+            ProgressBar(100);
+        });
+
+        var progress = 0;
+
+        function myTimer() {
+            ProgressBar(progress);
+            progress = progress + 1;
+        }
+
+        function DownLoadIt(uri, name) {
+            var elem = document.getElementById("barText");
+            elem.innerHTML = "Generating :" + name;
+            var timer = setInterval(myTimer, 1000);
+            var startTime = new Date().getTime();
+            request = new XMLHttpRequest();
+            request.responseType = 'blob';
+            request.open('get', uri, true);
+            request.send();
+
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (request.response.type.includes("text")) {
+                        window.location.href = window.URL.createObjectURL(this.response);
+                    }
+                    else {
+                        var obj = window.URL.createObjectURL(this.response);
+                        var link = document.createElement("a");
+                        // If you don't know the name or want to use
+                        // the webserver default set name = ''
+                        link.setAttribute('download', name);
+                        link.href = obj;
+                        document.body.appendChild(link);
+                        link.click();
+                        link.remove();
+
+                        setTimeout(function () {
+                            window.URL.revokeObjectURL(obj);
+                        }, 60 * 1000);
+                    }
+
+                }
+            };
+
+            request.onprogress = function (e) {
+                elem.innerHTML = "Downloading :" + name;
+                var percent_complete = (e.loaded / e.total) * 100;
+                percent_complete = Math.floor(percent_complete);
+                ProgressBar(percent_complete);
+                clearInterval(timer);
+
+            };
+        }
+    </script>
+
+</body>
+</html>
