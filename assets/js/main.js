@@ -64,3 +64,29 @@
 				});
 
 })(jQuery);
+
+// Load external HTML fragment for Webteam and inject into #content
+(function($){
+	function swapContent(html){
+		var $c = $('#content');
+		if (!$c.length) return;
+		$c.fadeOut(120, function(){
+			$c.html(html).fadeIn(150);
+		});
+	}
+
+	$(function(){
+		$('#nav a').filter(function(){ return $(this).text().trim().toLowerCase() === 'webteam'; })
+			.on('click', function(e){
+				e.preventDefault();
+				// Load the fragment and inject
+				$.get('webteam.html').done(function(data){
+					swapContent(data);
+				}).fail(function(){
+					swapContent('<p>Kon webteam-pagina niet laden.</p>');
+				});
+
+				if ($('#navPanel').length) { $('#navPanel').removeClass('navPanel-visible'); }
+			});
+	});
+})(jQuery);

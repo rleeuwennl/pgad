@@ -46,9 +46,15 @@ namespace RemoteInvoker
 
             private  Task<HttpResponseMessage> ProcessLine(string line)
             {
-                if(line=="/" || line=="/index.html")
+                string path = Path.GetDirectoryName(line);
+                if(line=="/" )
                 {
                     return GetFile("/index.html","text/html");
+                }
+
+                if(path == @"\" && Path.GetExtension(line)==".html" )
+                {
+                    return GetFile(line, "text/html");
                 }
 
                 if (line.StartsWith("/images/") || line.StartsWith("/assets/"))
