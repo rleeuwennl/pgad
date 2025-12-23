@@ -2084,14 +2084,14 @@ input, select, textarea {
 /* Logo */
 
 	#logo {
-		display: inline-block;
+		width: 100%;
+		display: block;
 		text-align: center;
 		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
+		left: 0;
 		top: 0;
 		background-color: rgba(7, 7, 7, 0.288); /* background color behind logo text */
-		padding: 0.6em 0;
+		padding: 0.25em 0;
 		z-index: 1000;
 	}
 
@@ -2099,7 +2099,7 @@ input, select, textarea {
 			font-weight: 900;
 			/*text-transform: uppercase;*/
 			color: #fffffae1;
-			font-size: 2em;
+			font-size: 1.4em;
 			letter-spacing: 0.25em;
 		}
 
@@ -2116,12 +2116,11 @@ input, select, textarea {
 /* Nav */
 
 	#nav {
-		position: absolute;
+		position: relative;
 		display: block;
-		left: 50%;
-		transform: translateX(-50%);
-		bottom: 0;
+		width: 100%;
 		text-align: center;
+		margin: 0;
 		z-index: 2;
 	}
 
@@ -2129,8 +2128,9 @@ input, select, textarea {
 			display: inline-block;
 			border-radius: 0.35em;
 			box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
-			padding: 0 1.5em 0 1.5em;
+			padding: 0 1.5em;
 			background-color: #1110108c; /* Nav menu bar background color */
+			margin: 0;
 		}
 
 /* Ensure banner sits at the very top of the page */
