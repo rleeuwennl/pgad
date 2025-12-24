@@ -100,7 +100,7 @@ input, select, textarea {
 	body, input, textarea, select {
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 400;
-		color: #919499;
+		color: #222222;
 		font-size: 14pt;
 		line-height: 1.75em;
 		letter-spacing: 0.025em;
@@ -3009,3 +3009,8 @@ body {
 						}
 
 	}
+	
+/* Make all header.style1 <p>paragraph</p> text darker */
+header.style1 p {
+	color: #222222;
+}
