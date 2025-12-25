@@ -1453,7 +1453,7 @@ input, select, textarea {
 
 	header.style1 {
 		text-align: center;
-		padding: 3em 0 3em 0;
+		padding: 0.5em 0 0.5em 0;
 	}
 
 		header.style1 h2 {
@@ -1466,7 +1466,7 @@ input, select, textarea {
 		header.style1 p {
 			color: #b1b4b9;
 			display: block;
-			margin: 1.15em 0 0 0;
+			margin: 0.25em 0 0 0;
 			font-size: 1.3em;
 			letter-spacing: 0.075em;
 			line-height: 1.5em;
@@ -2964,7 +2964,7 @@ body {
 			}
 
 				#content header.style1 {
-					padding-bottom: 2.5em;
+					padding-bottom: 0.2em;
 				}
 
 		/* Footer */
@@ -3014,3 +3014,42 @@ body {
 header.style1 p {
 	color: #222222;
 }
+
+/* Specific: reduce top padding for main content column to remove large white gap */
+#main .row.gtr-150 > .col-8,
+#main .row.gtr-150 > .col-8.col-12-medium,
+#main .row.gtr-150 > .col-8.col-12 {
+	padding-top: 4px !important;
+}
+
+/* Slightly tighten header->image gap if present */
+header.style1 + .image.featured,
+header.style1 + .image {
+	margin-top: 8px !important;
+}
+
+/* End specific adjustments */
+
+/* TIGHTEN: reduce vertical space between section headers and main content */
+/* Targets common header placements and uses !important to override theme defaults */
+#content header.style1,
+article.box.post > header.style1,
+.box > header.style1 {
+	padding-top: 0.3em !important;
+	padding-bottom: 0.3em !important;
+	margin-bottom: 0 !important;
+}
+
+#content header.style1 p,
+article.box.post > header.style1 p,
+.box > header.style1 p {
+	margin-top: 0.25em !important;
+}
+
+/* Reduce gap when a featured image immediately follows the header */
+header.style1 + .image.featured,
+header.style1 + .image {
+	margin-top: 0.2em !important;
+}
+
+/* End tighten overrides */
