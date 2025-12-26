@@ -88,5 +88,6 @@
 
 				if ($('#navPanel').length) { $('#navPanel').removeClass('navPanel-visible'); }
 			});
+
 	});
 })(jQuery);
