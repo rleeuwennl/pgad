@@ -94,6 +94,10 @@ namespace RemoteInvoker
                     //request.RequestUri = new Uri("https://pgad.dsea.nl/index.html");
                     
                 }
+
+
+                return null;
+
                 return base.SendAsync(request, cancellationToken);
 
             }

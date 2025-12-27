@@ -24,6 +24,64 @@
 			}, 100);
 		});
 
+	// Fragment loader: single handler for nav and navPanel (capture to beat dropotron)
+	(function(){
+		function swapContent(html){
+			var $c = $('#content');
+			if (!$c.length) return;
+			$c.fadeOut(120, function(){
+				$c.html(html).fadeIn(150);
+			});
+		}
+
+		var fragmentMap = {
+			'webteam': 'webteam.html',
+			'pastoraalteam': 'pastoraalteam.html',
+			'contact': 'contact.html',
+			'kerkenraad': 'kerkenraad.html',
+			'moderamen': 'moderamen.html',
+			'voorgangers': 'voorgangers.html',			
+			'diaconaat': 'diaconaat.html',
+			'bloemengroet': 'bloemengroet.html',
+			'anbidiakoniepgad': 'anbi-diaconie-pgad.html',
+			'projectcolumbia': 'project-columbia.html',
+			'perspective': 'perspective.html',
+			'tentofnations': 'tent-of-nations.html',
+			'zending': 'zending.html',
+		};
+
+		function normalizeText(text){
+			return (text || '').toString().trim().toLowerCase().replace(/\s+/g, '');
+		}
+
+		console.log('Fragment loader: capture handler binding');
+
+		document.addEventListener('click', function(e){
+			var link = e.target.closest('#nav a, #navPanel a');
+			if (!link) return;
+			var linkText = normalizeText(link.textContent);
+			var frag = fragmentMap[linkText];
+
+			if (!frag) return;
+
+			console.log('Fragment click detected:', linkText, '->', frag);
+			e.preventDefault();
+			e.stopPropagation();
+			e.stopImmediatePropagation();
+
+			$.get(frag).done(function(data){
+				console.log('Fragment loaded:', frag);
+				swapContent(data);
+			}).fail(function(){
+				console.log('Fragment load failed for', frag);
+				swapContent('<p>Kon pagina niet laden.</p>');
+			});
+
+			// Close mobile panel if open
+			$('body').removeClass('navPanel-visible');
+		}, true); // capture phase
+	})();
+
 	// Dropdowns.
 		$('#nav > ul').dropotron({
 			mode: 'fade',
@@ -63,31 +121,4 @@
 					visibleClass: 'navPanel-visible'
 				});
 
-})(jQuery);
-
-// Load external HTML fragment for Webteam and inject into #content
-(function($){
-	function swapContent(html){
-		var $c = $('#content');
-		if (!$c.length) return;
-		$c.fadeOut(120, function(){
-			$c.html(html).fadeIn(150);
-		});
-	}
-
-	$(function(){
-		$('#nav a').filter(function(){ return $(this).text().trim().toLowerCase() === 'webteam'; })
-			.on('click', function(e){
-				e.preventDefault();
-				// Load the fragment and inject
-				$.get('webteam.html').done(function(data){
-					swapContent(data);
-				}).fail(function(){
-					swapContent('<p>Kon webteam-pagina niet laden.</p>');
-				});
-
-				if ($('#navPanel').length) { $('#navPanel').removeClass('navPanel-visible'); }
-			});
-
-	});
 })(jQuery);
