@@ -3015,6 +3015,14 @@ header.style1 p {
 	color: #222222;
 }
 
+/* Rounded background for half-width boxes */
+.col-6.col-12-small .box {
+	background: #d9d8da;
+	border-radius: 12px;
+	padding: 1.25em 1.5em;
+	margin: 0.75em 0;
+}
+
 /* Specific: reduce top padding for main content column to remove large white gap */
 #main .row.gtr-150 > .col-8,
 #main .row.gtr-150 > .col-8.col-12-medium,

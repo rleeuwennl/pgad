@@ -48,6 +48,7 @@
 			'perspective': 'perspective.html',
 			'tentofnations': 'tent-of-nations.html',
 			'zending': 'zending.html',
+	   	    'overvieren': 'over-vieren.html',
 		};
 
 		function normalizeText(text){
