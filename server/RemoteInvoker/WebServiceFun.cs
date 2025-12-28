@@ -57,7 +57,7 @@ namespace RemoteInvoker
                     return GetFile(line, "text/html");
                 }
 
-                if (line.StartsWith("/images/") || line.StartsWith("/assets/"))
+                if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/"))
                 {
                     string ext = Path.GetExtension(line);
 
@@ -71,7 +71,7 @@ namespace RemoteInvoker
                         case ".jpg": return GetFile(line, "image/jpeg");
                         case ".png": return GetFile(line, "image/png");
                         case ".woff2": return GetFile(line, "font/woff2");
-
+                        case ".pdf": return GetFile(line, "application/pdf");
                     }
                 }
 
