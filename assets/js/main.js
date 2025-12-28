@@ -58,14 +58,20 @@
 		console.log('Fragment loader: capture handler binding');
 
 		document.addEventListener('click', function(e){
-			var link = e.target.closest('#nav a, #navPanel a');
+			var link = e.target.closest('#nav a, #navPanel a, [data-fragment]');
 			if (!link) return;
-			var linkText = normalizeText(link.textContent);
-			var frag = fragmentMap[linkText];
+			
+			// Check for explicit data-fragment attribute (buttons)
+			var frag = link.getAttribute('data-fragment');
+			if (!frag) {
+				// Fallback: check nav link text mapping
+				var linkText = normalizeText(link.textContent);
+				frag = fragmentMap[linkText];
+			}
 
 			if (!frag) return;
 
-			console.log('Fragment click detected:', linkText, '->', frag);
+			console.log('Fragment click detected, loading:', frag);
 			e.preventDefault();
 			e.stopPropagation();
 			e.stopImmediatePropagation();
