@@ -17,7 +17,7 @@ using System.Drawing;
 
 using System.Drawing.Imaging;
 using System.IO;
-
+using System.Web;
 
 namespace RemoteInvoker
 {
@@ -26,15 +26,46 @@ namespace RemoteInvoker
         // see: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/http-message-handlers
         public class ApiKeyHandler : DelegatingHandler
         {
+            private int vistitors = 0;
             public ApiKeyHandler()
             {
 
             }
 
-
-            private async Task<HttpResponseMessage> GetFile(string file,string mime)
+            private HttpResponseMessage GetHtml(string filename)
             {
-                file = @"c:/pgad"+ file;
+                if(!System.IO.File.Exists(filename))
+                {
+                    return null;
+                }
+
+                string result = System.IO.File.ReadAllText(filename);
+                result = result.Replace("[visitors]", string.Format("{0:000000}", vistitors));
+
+                HttpResponseMessage response = new HttpResponseMessage();
+                response.Content = new StringContent(result);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+                response.StatusCode = HttpStatusCode.OK;
+                return response;
+
+            }
+
+
+            private async Task<HttpResponseMessage> GetFile(string file, string mime)
+            {
+
+                file = @"c:/pgad" + file;
+
+                if (!System.IO.File.Exists(file))
+                {
+                    return null;
+                }
+
+                if (Path.GetExtension(file) == ".html")
+                {
+                    return GetHtml(file);
+                }
+
                 HttpResponseMessage response = new HttpResponseMessage();
                 byte[] buffer = File.ReadAllBytes(file);
                 response.Content = new StreamContent(new MemoryStream(buffer));
@@ -44,47 +75,75 @@ namespace RemoteInvoker
                 return response;
             }
 
-            private  Task<HttpResponseMessage> ProcessLine(string line)
+            private Task<HttpResponseMessage> ProcessLine(string line)
             {
-                string path = Path.GetDirectoryName(line);
-                if(line=="/" )
+                try
                 {
-                    return GetFile("/index.html","text/html");
-                }
-
-                if(path == @"\" && Path.GetExtension(line)==".html" )
-                {
-                    return GetFile(line, "text/html");
-                }
-
-                if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/"))
-                {
-                    string ext = Path.GetExtension(line);
-
-                    switch (ext)
+                    string path = Path.GetDirectoryName(line);
+                    if (line == "/")
                     {
-                        case ".html": return GetFile(line, "text/html");
-                        case ".css": return GetFile(line, "text/css");
-                        case ".js": return GetFile(line, "text/jscript");
-                        case ".txt": return GetFile(line, "text/html");
-                        case ".ico": return GetFile(line, "image/x-icon");
-                        case ".jpg": return GetFile(line, "image/jpeg");
-                        case ".png": return GetFile(line, "image/png");
-                        case ".woff2": return GetFile(line, "font/woff2");
-                        case ".pdf": return GetFile(line, "application/pdf");
+                        string countersFile = "counters.txt";
+                        if (System.IO.File.Exists(countersFile))
+                        {
+                            string s = System.IO.File.ReadAllText(countersFile);
+                            vistitors = int.Parse(s) + 1;
+                            Console.WriteLine($"{vistitors} visitors");
+                            Console.Beep(2000, 100);
+                        }
+
+                        System.IO.File.WriteAllText(countersFile, vistitors.ToString());
+
+                        return GetFile("/index.html", "text/html");
                     }
+
+                    if (path == @"\" && Path.GetExtension(line) == ".html")
+                    {
+                        var content = GetFile(line, "text/html");
+                        return content;
+                    }
+
+                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/"))
+                    {
+                        string ext = Path.GetExtension(line);
+
+                        switch (ext)
+                        {
+                            case ".html": return GetFile(line, "text/html");
+                            case ".css": return GetFile(line, "text/css");
+                            case ".js": return GetFile(line, "text/jscript");
+                            case ".txt": return GetFile(line, "text/html");
+                            case ".ico": return GetFile(line, "image/x-icon");
+                            case ".jpg": return GetFile(line, "image/jpeg");
+                            case ".png": return GetFile(line, "image/png");
+                            case ".woff2": return GetFile(line, "font/woff2");
+                            case ".pdf": return GetFile(line, "application/pdf");
+                        }
+                    }
+
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine($"FAILURE {e.Message} \r\n {e.StackTrace}");
+                    Console.Beep(500, 1000);
                 }
 
-                return null;                
+                return null;
             }
 
             protected override Task<HttpResponseMessage> SendAsync(
                 HttpRequestMessage request, CancellationToken cancellationToken)
             {
+
                 string query = request.RequestUri.Query;
 
+                Console.Write(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") +" =>");
+                Console.Write("Request:"+ request.RequestUri.LocalPath);
+
                 var response = ProcessLine(request.RequestUri.LocalPath);
-                if(response!=null)
+                Console.WriteLine(response!=null?" [OK]": " [NOK]");
+
+
+                if (response != null)
                 {
                     return response;
                 }
@@ -92,7 +151,7 @@ namespace RemoteInvoker
                 if (query == string.Empty)
                 {
                     //request.RequestUri = new Uri("https://pgad.dsea.nl/index.html");
-                    
+
                 }
 
 
