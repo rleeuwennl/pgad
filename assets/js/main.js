@@ -35,6 +35,7 @@
 		}
 
 		var fragmentMap = {
+/*			
 			'webteam': 'webteam.html',
 			'pastoraalteam': 'pastoraalteam.html',
 			'contact': 'contact.html',
@@ -49,8 +50,8 @@
 			'tentofnations': 'tent-of-nations.html',
 			'zending': 'zending.html',
 	   	    'overvieren': 'over-vieren.html',
-			'collegevankerkrentmeesters': 'college-van-kerkrentmeesters.html',
-		};
+*/			
+        };
 
 		function normalizeText(text){
 			return (text || '').toString().trim().toLowerCase().replace(/\s+/g, '');
