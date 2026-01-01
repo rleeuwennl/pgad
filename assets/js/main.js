@@ -47,16 +47,16 @@
 
 		function loadFragment(frag, opts){
 			opts = opts || {};
+			var requestUrl = frag.charAt(0) === '/' ? frag : '/' + frag;
 			$.ajax({
-				url: frag,
+				url: requestUrl,
 				headers: { 'X-Fragment-Request': '1' }
 			}).done(function(data){
 				swapContent(data);
-				var url = frag.charAt(0) === '/' ? frag : '/' + frag;
 				if (opts.replaceHistory) {
-					window.history.replaceState({ page: frag }, frag, url);
+					window.history.replaceState({ page: frag }, frag, requestUrl);
 				} else if (!opts.silentHistory) {
-					window.history.pushState({ page: frag }, frag, url);
+					window.history.pushState({ page: frag }, frag, requestUrl);
 				}
 			}).fail(function(){
 				swapContent('<p>Kon pagina niet laden.</p>');

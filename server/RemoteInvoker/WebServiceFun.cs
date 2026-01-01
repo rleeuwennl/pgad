@@ -108,7 +108,7 @@ namespace RemoteInvoker
                         return GetFile("/index.html", "text/html");
                     }
 
-                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/"))
+                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/"))
                     {
                         string ext = Path.GetExtension(line);
 
