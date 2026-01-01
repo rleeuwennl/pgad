@@ -84,6 +84,12 @@
 			var link = e.target.closest('#nav a, #navPanel a, [data-fragment]');
 			if (!link) return;
 
+			// Skip external links (http://, https://, mailto:, etc.)
+			var href = link.getAttribute('href') || '';
+			if (href.match(/^(https?:|mailto:)/i)) {
+				return; // Let browser handle external links normally
+			}
+
 			// If this link opens a submenu (has a following UL), block navigation/click-through
 			if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
 				e.preventDefault();

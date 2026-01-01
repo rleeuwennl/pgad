@@ -98,12 +98,14 @@ namespace RemoteInvoker
                         return GetFile("/index.html", "text/html");
                     }
 
-                    if (path == @"\" && Path.GetExtension(line) == ".html")
+                    // All .html requests: serve the fragment only when explicitly asked; otherwise serve shell
+                    if (Path.GetExtension(line) == ".html")
                     {
                         if (isFragmentRequest)
                         {
                             return GetFile(line, "text/html");
                         }
+
                         // Serve shell (index.html) so client-side loader can inject fragment
                         return GetFile("/index.html", "text/html");
                     }
@@ -114,7 +116,6 @@ namespace RemoteInvoker
 
                         switch (ext)
                         {
-                            case ".html": return GetFile(line, "text/html");
                             case ".css": return GetFile(line, "text/css");
                             case ".js": return GetFile(line, "text/jscript");
                             case ".txt": return GetFile(line, "text/html");
