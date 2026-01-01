@@ -75,10 +75,12 @@ namespace RemoteInvoker
                 return response;
             }
 
-            private Task<HttpResponseMessage> ProcessLine(string line)
+            private Task<HttpResponseMessage> ProcessLine(HttpRequestMessage request)
             {
                 try
                 {
+                    string line = request.RequestUri.LocalPath;
+                    bool isFragmentRequest = request.Headers.Contains("X-Fragment-Request");
                     string path = Path.GetDirectoryName(line);
                     if (line == "/")
                     {
@@ -98,8 +100,12 @@ namespace RemoteInvoker
 
                     if (path == @"\" && Path.GetExtension(line) == ".html")
                     {
-                        var content = GetFile(line, "text/html");
-                        return content;
+                        if (isFragmentRequest)
+                        {
+                            return GetFile(line, "text/html");
+                        }
+                        // Serve shell (index.html) so client-side loader can inject fragment
+                        return GetFile("/index.html", "text/html");
                     }
 
                     if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/"))
@@ -149,7 +155,7 @@ namespace RemoteInvoker
                 Console.Write(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") +" =>");
                 Console.Write("Request:"+ request.RequestUri.LocalPath);
 
-                var response = ProcessLine(request.RequestUri.LocalPath);
+                var response = ProcessLine(request);
 
 
 
@@ -161,16 +167,7 @@ namespace RemoteInvoker
                     return response;
                 }
 
-                if (query == string.Empty)
-                {
-                    //request.RequestUri = new Uri("https://pgad.dsea.nl/index.html");
-
-                }
-
-
-                return null;
-
-                return base.SendAsync(request, cancellationToken);
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound));
 
             }
         }

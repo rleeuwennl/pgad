@@ -24,7 +24,7 @@
 			}, 100);
 		});
 
-	// Fragment loader: single handler for nav and navPanel (capture to beat dropotron)
+	// Fragment loader with History API: load into #content and keep URLs updated
 	(function(){
 		function swapContent(html){
 			var $c = $('#content');
@@ -34,27 +34,37 @@
 			});
 		}
 
-		var fragmentMap = {
-/*			
-			'webteam': 'webteam.html',
-			'pastoraalteam': 'pastoraalteam.html',
-			'contact': 'contact.html',
-			'kerkenraad': 'kerkenraad.html',
-			'moderamen': 'moderamen.html',
-			'voorgangers': 'voorgangers.html',			
-			'diaconaat': 'diaconaat.html',
-			'bloemengroet': 'bloemengroet.html',
-			'anbidiakoniepgad': 'anbi-diaconie-pgad.html',
-			'projectcolumbia': 'project-columbia.html',
-			'perspective': 'perspective.html',
-			'tentofnations': 'tent-of-nations.html',
-			'zending': 'zending.html',
-	   	    'overvieren': 'over-vieren.html',
-*/			
-        };
+		function loadFragment(frag, opts){
+			opts = opts || {};
+			$.ajax({
+				url: frag,
+				headers: { 'X-Fragment-Request': '1' }
+			}).done(function(data){
+				swapContent(data);
+				var url = frag.charAt(0) === '/' ? frag : '/' + frag;
+				if (opts.replaceHistory) {
+					window.history.replaceState({ page: frag }, frag, url);
+				} else if (!opts.silentHistory) {
+					window.history.pushState({ page: frag }, frag, url);
+				}
+			}).fail(function(){
+				swapContent('<p>Kon pagina niet laden.</p>');
+			});
+		}
 
 		function normalizeText(text){
 			return (text || '').toString().trim().toLowerCase().replace(/\s+/g, '');
+		}
+
+		function detectInitialFragment(){
+			var url = new URL(window.location.href);
+			var fragParam = url.searchParams.get('frag');
+			if (fragParam) return fragParam;
+			var path = url.pathname || '/';
+			if (path !== '/' && path !== '/index.html') {
+				return path.replace(/^\//, '');
+			}
+			return null;
 		}
 
 		console.log('Fragment loader: capture handler binding');
@@ -62,33 +72,35 @@
 		document.addEventListener('click', function(e){
 			var link = e.target.closest('#nav a, #navPanel a, [data-fragment]');
 			if (!link) return;
-			
-			// Check for explicit data-fragment attribute (buttons)
+
 			var frag = link.getAttribute('data-fragment');
 			if (!frag) {
-				// Fallback: check nav link text mapping
 				var linkText = normalizeText(link.textContent);
-				frag = fragmentMap[linkText];
+				frag = linkText && (linkText + '.html');
 			}
 
 			if (!frag) return;
 
-			console.log('Fragment click detected, loading:', frag);
 			e.preventDefault();
 			e.stopPropagation();
 			e.stopImmediatePropagation();
 
-			$.get(frag).done(function(data){
-				console.log('Fragment loaded:', frag);
-				swapContent(data);
-			}).fail(function(){
-				console.log('Fragment load failed for', frag);
-				swapContent('<p>Kon pagina niet laden.</p>');
-			});
+			loadFragment(frag);
 
-			// Close mobile panel if open
 			$('body').removeClass('navPanel-visible');
-		}, true); // capture phase
+		}, true);
+
+		window.addEventListener('popstate', function(e){
+			if (e.state && e.state.page) {
+				loadFragment(e.state.page, { silentHistory: true });
+			}
+		});
+
+		// On first load, if URL points to a fragment (path or ?frag=...), load it into #content
+		var initialFrag = detectInitialFragment();
+		if (initialFrag) {
+			loadFragment(initialFrag, { replaceHistory: true });
+		}
 	})();
 
 	// Dropdowns.
