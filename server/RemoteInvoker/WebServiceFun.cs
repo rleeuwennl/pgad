@@ -130,6 +130,16 @@ namespace RemoteInvoker
                 return null;
             }
 
+            string GetIp()
+            {
+                string ip = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                if (string.IsNullOrEmpty(ip))
+                {
+                    ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                }
+                return ip;
+            }
+
             protected override Task<HttpResponseMessage> SendAsync(
                 HttpRequestMessage request, CancellationToken cancellationToken)
             {
@@ -140,6 +150,9 @@ namespace RemoteInvoker
                 Console.Write("Request:"+ request.RequestUri.LocalPath);
 
                 var response = ProcessLine(request.RequestUri.LocalPath);
+
+
+
                 Console.WriteLine(response!=null?" [OK]": " [NOK]");
 
 
