@@ -90,6 +90,13 @@
 				return; // Let browser handle external links normally
 			}
 
+			// Handle home/index links with a full page reload
+			if (href === 'index.html' || href === '/' || href === '') {
+				e.preventDefault();
+				window.location.href = '/';
+				return;
+			}
+
 			// If this link opens a submenu (has a following UL), block navigation/click-through
 			if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
 				e.preventDefault();
@@ -118,6 +125,9 @@
 		window.addEventListener('popstate', function(e){
 			if (e.state && e.state.page) {
 				loadFragment(e.state.page, { silentHistory: true });
+			} else {
+				// Back to home: reload the page
+				window.location.reload();
 			}
 		});
 
