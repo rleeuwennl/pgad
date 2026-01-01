@@ -3061,3 +3061,8 @@ header.style1 + .image {
 }
 
 /* End tighten overrides */
+
+/* Make parent nav items non-clickable visually */
+#nav ul li > a.nav-parent {
+	cursor: default;
+}

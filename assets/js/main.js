@@ -24,6 +24,17 @@
 			}, 100);
 		});
 
+	// Mark nav parents (with submenus) as non-clickable for UX clarity
+	document.addEventListener('DOMContentLoaded', function(){
+		var parentLinks = document.querySelectorAll('#nav li > a');
+		parentLinks.forEach(function(link){
+			if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
+				link.classList.add('nav-parent');
+				link.setAttribute('href', '#');
+			}
+		});
+	});
+
 	// Fragment loader with History API: load into #content and keep URLs updated
 	(function(){
 		function swapContent(html){
@@ -72,6 +83,14 @@
 		document.addEventListener('click', function(e){
 			var link = e.target.closest('#nav a, #navPanel a, [data-fragment]');
 			if (!link) return;
+
+			// If this link opens a submenu (has a following UL), block navigation/click-through
+			if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return;
+			}
 
 			var frag = link.getAttribute('data-fragment');
 			if (!frag) {
