@@ -1,29 +1,113 @@
+<script>
+    var liturgieData = {youtubeInsluit: "", pdfFile: ""};
+    
+    function applyLiturgieData() {
+        console.log('Applying liturgie data:', liturgieData);
+        
+        var showLiveButton = !liturgieData.youtubeInsluit || liturgieData.youtubeInsluit.trim() === "";
+
+        // Apply YouTube insluit code if present
+        if (liturgieData.youtubeInsluit && liturgieData.youtubeInsluit.trim() !== "") {
+            console.log('Found youtubeInsluit, extracting iframe src');
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = liturgieData.youtubeInsluit;
+            var iframe = tempDiv.querySelector('iframe');
+            if (iframe) {
+                var src = iframe.getAttribute('src');
+                console.log('Extracted src:', src);
+                var $youtubeFrame = document.getElementById('youtube-frame');
+                if ($youtubeFrame) {
+                    $youtubeFrame.src = src;
+                    $youtubeFrame.style.display = 'block';
+                    console.log('YouTube frame displayed');
+                }
+            }
+        }
+
+        // Apply PDF data
+        if (liturgieData.pdfFile && liturgieData.pdfFile.trim() !== "") {
+            console.log('Found pdfFile:', liturgieData.pdfFile);
+            var $pdfFrame = document.getElementById('pdf-frame');
+            if ($pdfFrame) {
+                $pdfFrame.src = liturgieData.pdfFile;
+                var $pdfSection = document.getElementById('pdf-section');
+                if ($pdfSection) {
+                    $pdfSection.style.display = 'block';
+                    console.log('PDF section displayed');
+                }
+            }
+        }
+
+        // Apply live button (show if youtubeInsluit is empty)
+        if (showLiveButton) {
+            console.log('Showing live button');
+            var $liveSection = document.getElementById('live-section');
+            if ($liveSection) {
+                $liveSection.style.display = 'block';
+                var $liveButton = document.getElementById('live-button');
+                if ($liveButton) {
+                    $liveButton.href = "https://www.youtube.com/@kerkangerlo-doesburg4481/live";
+                }
+            }
+        }
+    }
+
+    // Load and apply data
+    function loadAndApplyData() {
+        var jsonFile = '/json/litturgie_18jan2026.json?t=' + Date.now();
+        console.log('Loading from:', jsonFile);
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', jsonFile, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    try {
+                        liturgieData = JSON.parse(xhr.responseText);
+                        console.log('Data loaded successfully:', liturgieData);
+                        applyLiturgieData();
+                    } catch(e) {
+                        console.error('Failed to parse JSON:', e);
+                    }
+                } else {
+                    console.error('Failed to load JSON, status:', xhr.status);
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Load data immediately and also on DOMContentLoaded
+    loadAndApplyData();
+    document.addEventListener('DOMContentLoaded', loadAndApplyData);
+</script>
+
 <article class="box post">
     <header class="style1">
         <h2></h2>
         <p>18 Januari 10.00 uur<br>ds. Bert Bomer</p>
     </header>
-    
 
-    <section style="margin-top: 2em;">
+    <!-- Live Section -->
+    <section id="live-section" style="margin-top: 2em; display: none;">
         <h3>Live Kerkdienst</h3>
         <p>Bekijk de live uitzending van de kerkdienst op ons YouTube kanaal:</p>
         <p style="text-align: center; margin: 2em 0;">
-            <a href="https://www.youtube.com/@kerkangerlo-doesburg4481/live" target="_blank" class="button style1">
+            <a id="live-button" href="" target="_blank" class="button style1">
                 Open Live Stream op YouTube
             </a>
         </p>
         <p><em>De live stream opent in een nieuw venster wanneer de uitzending actief is.</em></p>
     </section>
 
-<!--
+    <!-- YouTube Frame -->
+    <iframe id="youtube-frame" width="100%" height="450" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 8px; display: none;"></iframe>
 
-
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/KZRJ0X_tFbs?si=Q1R7r4xfVpcUXQUt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 8px;"></iframe>
-
-    <section style="margin-top: 2em;">
+    <!-- PDF Section -->
+    <section id="pdf-section" style="margin-top: 2em; display: none;">
         <h3></h3>
-        <iframe src="/pdf/25dec2025.pdf" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
+        <iframe id="pdf-frame" src="" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
     </section>
--->
 </article>
+
+

@@ -1,0 +1,225 @@
+// Liturgie Editor Module - Edit YouTube links and upload PDFs for authorized users
+(function($) {
+    'use strict';
+
+    var LiturgieEditor = {
+        currentFile: null,
+
+        init: function() {
+            // Listen for content changes to detect liturgie pages
+            var observer = new MutationObserver(function() {
+                LiturgieEditor.checkForLiturgiePage();
+            });
+            
+            observer.observe(document.getElementById('content'), {
+                childList: true,
+                subtree: true
+            });
+
+            // Check on initial load
+            setTimeout(function() {
+                LiturgieEditor.checkForLiturgiePage();
+            }, 500);
+        },
+
+        checkForLiturgiePage: function() {
+            // Get current page from URL
+            var path = window.location.pathname;
+            var match = path.match(/litturgie_[^\/]+\.html/);
+            
+            if (match) {
+                this.currentFile = match[0].replace('html/', '');
+                if (SimpleAuth && SimpleAuth.isAuthenticated) {
+                    this.showEditor();
+                }
+            } else {
+                this.hideEditor();
+            }
+        },
+
+        showEditor: function() {
+            if ($('#liturgie-editor').length) return; // Already shown
+
+            var editorHtml = `
+                <div id="liturgie-editor" class="liturgie-editor">
+                    <div class="liturgie-editor-header">
+                        <h4>⚙️ Liturgie Bewerken</h4>
+                        <button class="liturgie-toggle" onclick="LiturgieEditor.toggleEditor()">−</button>
+                    </div>
+                    <div class="liturgie-editor-body">
+                        <div class="liturgie-editor-section">
+                            <label>YouTube Insluit Code (HTML iframe):</label>
+                            <textarea id="youtube-insluit" placeholder="Plak hier de volledige iframe code..." style="width: 100%; height: 120px; padding: 8px; border: 2px solid #e0e0e0; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12px; box-sizing: border-box;"></textarea>
+                            <button onclick="LiturgieEditor.updateInsluit()" class="liturgie-btn">Update YouTube Code</button>
+                        </div>
+                        <div class="liturgie-editor-section">
+                            <label>Upload Liturgie PDF:</label>
+                            <input type="file" id="pdf-upload" accept=".pdf" />
+                            <button onclick="LiturgieEditor.uploadPDF()" class="liturgie-btn">Upload PDF</button>
+                        </div>
+                        <div id="liturgie-status" class="liturgie-status"></div>
+                    </div>
+                </div>
+            `;
+            
+            $('#content').prepend(editorHtml);
+            this.loadCurrentValues();
+        },
+
+        hideEditor: function() {
+            $('#liturgie-editor').remove();
+        },
+
+        toggleEditor: function() {
+            var $body = $('.liturgie-editor-body');
+            var $toggle = $('.liturgie-toggle');
+            
+            if ($body.is(':visible')) {
+                $body.slideUp(200);
+                $toggle.text('+');
+            } else {
+                $body.slideDown(200);
+                $toggle.text('−');
+            }
+        },
+
+        loadCurrentValues: function() {
+            // Extract filename from current URL or content
+            var path = window.location.pathname;
+            var match = path.match(/litturgie_[^\/]+\.html/);
+            
+            if (match) {
+                var htmlFile = match[0];
+                var jsonFile = htmlFile.replace('.html', '.json');
+                
+                // Fetch JSON data
+                $.ajax({
+                    url: '/json/' + jsonFile,
+                    dataType: 'json'
+                })
+                .done(function(data) {
+                    if (data.youtubeInsluit) {
+                        $('#youtube-insluit').val(data.youtubeInsluit);
+                    }
+                })
+                .fail(function() {
+                    console.log('Could not load JSON data');
+                });
+            }
+        },
+
+        updateInsluit: function() {
+            var youtubeInsluit = $('#youtube-insluit').val().trim();
+            
+            if (!youtubeInsluit) {
+                this.showStatus('Voer insluit code in', 'error');
+                return;
+            }
+
+            // Basic validation - check if it looks like iframe HTML
+            if (!youtubeInsluit.toLowerCase().includes('iframe')) {
+                this.showStatus('Dit ziet er niet uit als een iframe code', 'error');
+                return;
+            }
+
+            this.showStatus('Insluit code wordt bijgewerkt...', 'info');
+
+            $.ajax({
+                url: '/api/liturgie/update-insluit',
+                method: 'POST',
+                headers: SimpleAuth.getAuthHeader(),
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    filename: this.currentFile,
+                    youtubeInsluit: youtubeInsluit
+                })
+            })
+            .done(function(data) {
+                if (data.success) {
+                    LiturgieEditor.showStatus('✓ Insluit code bijgewerkt!', 'success');
+                    // Reload data from JSON and update iframe
+                    setTimeout(function() {
+                        if (window.LiturgieDataLoader) {
+                            LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
+                        }
+                        LiturgieEditor.loadCurrentValues();
+                    }, 1000);
+                }
+            })
+            .fail(function() {
+                LiturgieEditor.showStatus('Fout bij bijwerken insluit code', 'error');
+            });
+        },
+
+        uploadPDF: function() {
+            var fileInput = document.getElementById('pdf-upload');
+            var file = fileInput.files[0];
+
+            if (!file) {
+                this.showStatus('Selecteer een PDF bestand', 'error');
+                return;
+            }
+
+            if (!file.name.endsWith('.pdf')) {
+                this.showStatus('Alleen PDF bestanden zijn toegestaan', 'error');
+                return;
+            }
+
+            this.showStatus('PDF wordt geüpload...', 'info');
+
+            var formData = new FormData();
+            formData.append('filename', this.currentFile);
+            formData.append('pdfFile', file);
+
+            $.ajax({
+                url: '/api/liturgie/upload-pdf',
+                method: 'POST',
+                headers: SimpleAuth.getAuthHeader(),
+                data: formData,
+                processData: false,
+                contentType: false
+            })
+            .done(function(data) {
+                if (data.success) {
+                    LiturgieEditor.showStatus('✓ PDF geüpload: ' + data.pdfFilename, 'success');
+                    // Reload data from JSON and update iframe
+                    setTimeout(function() {
+                        if (window.LiturgieDataLoader) {
+                            LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
+                        }
+                        document.getElementById('pdf-upload').value = '';
+                    }, 1000);
+                }
+            })
+            .fail(function() {
+                LiturgieEditor.showStatus('Fout bij uploaden PDF', 'error');
+            });
+        },
+
+        showStatus: function(message, type) {
+            var $status = $('#liturgie-status');
+            $status.removeClass('liturgie-status-success liturgie-status-error liturgie-status-info');
+            $status.addClass('liturgie-status-' + type);
+            $status.text(message).fadeIn(200);
+
+            if (type === 'success') {
+                setTimeout(function() {
+                    $status.fadeOut(400);
+                }, 3000);
+            }
+        }
+    };
+
+    $(document).ready(function() {
+        // Initialize when SimpleAuth is ready
+        var checkAuth = setInterval(function() {
+            if (window.SimpleAuth) {
+                clearInterval(checkAuth);
+                LiturgieEditor.init();
+            }
+        }, 100);
+    });
+
+    window.LiturgieEditor = LiturgieEditor;
+
+})(jQuery);

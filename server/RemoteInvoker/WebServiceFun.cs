@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
 
 using System.Drawing;
 
@@ -150,6 +151,169 @@ namespace RemoteInvoker
                         return Task.FromResult(response);
                     }
 
+                    // Update YouTube link in liturgie JSON file
+                    if (line == "/api/liturgie/update-youtube" && request.Method == HttpMethod.Post)
+                    {
+                        if (!IsAuthorized(request))
+                        {
+                            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Unauthorized));
+                        }
+
+                        try
+                        {
+                            var json = request.Content.ReadAsStringAsync().Result;
+                            var jsonObj = JObject.Parse(json);
+                            
+                            var filename = jsonObj["filename"]?.ToString();
+                            var youtubeUrl = jsonObj["youtubeUrl"]?.ToString();
+                            var youtubeInsluit = jsonObj["youtubeInsluit"]?.ToString();
+                            
+                            if (!string.IsNullOrEmpty(filename) && !string.IsNullOrEmpty(youtubeUrl))
+                            {
+                                // Extract base filename without .html extension
+                                var jsonFilename = filename.Replace(".html", ".json");
+                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                
+                                if (File.Exists(jsonPath))
+                                {
+                                    var jsonContent = File.ReadAllText(jsonPath);
+                                    var jsonData = JObject.Parse(jsonContent);
+                                    
+                                    jsonData["youtubeUrl"] = youtubeUrl;
+                                    if (!string.IsNullOrEmpty(youtubeInsluit))
+                                    {
+                                        jsonData["youtubeInsluit"] = youtubeInsluit;
+                                    }
+                                    
+                                    File.WriteAllText(jsonPath, jsonData.ToString(Newtonsoft.Json.Formatting.Indented));
+                                    Console.WriteLine("Updated YouTube URL in: " + jsonFilename);
+
+                                    var response = new HttpResponseMessage();
+                                    response.Content = new StringContent("{\"success\":true}");
+                                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                                    return Task.FromResult(response);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("YouTube update error: " + ex.Message);
+                        }
+                        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest));
+                    }
+
+                    // Update YouTube insluit code in liturgie JSON file
+                    if (line == "/api/liturgie/update-insluit" && request.Method == HttpMethod.Post)
+                    {
+                        if (!IsAuthorized(request))
+                        {
+                            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Unauthorized));
+                        }
+
+                        try
+                        {
+                            var json = request.Content.ReadAsStringAsync().Result;
+                            var jsonObj = JObject.Parse(json);
+                            
+                            var filename = jsonObj["filename"]?.ToString();
+                            var youtubeInsluit = jsonObj["youtubeInsluit"]?.ToString();
+                            
+                            if (!string.IsNullOrEmpty(filename) && !string.IsNullOrEmpty(youtubeInsluit))
+                            {
+                                // Extract base filename without .html extension
+                                var jsonFilename = filename.Replace(".html", ".json");
+                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                
+                                if (File.Exists(jsonPath))
+                                {
+                                    var jsonContent = File.ReadAllText(jsonPath);
+                                    var jsonData = JObject.Parse(jsonContent);
+                                    
+                                    jsonData["youtubeInsluit"] = youtubeInsluit;
+                                    
+                                    File.WriteAllText(jsonPath, jsonData.ToString(Newtonsoft.Json.Formatting.Indented));
+                                    Console.WriteLine("Updated YouTube Insluit in: " + jsonFilename);
+
+                                    var response = new HttpResponseMessage();
+                                    response.Content = new StringContent("{\"success\":true}");
+                                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                                    return Task.FromResult(response);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Insluit update error: " + ex.Message);
+                        }
+                        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest));
+                    }
+
+                    // Upload PDF for liturgie
+                    if (line == "/api/liturgie/upload-pdf" && request.Method == HttpMethod.Post)
+                    {
+                        if (!IsAuthorized(request))
+                        {
+                            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Unauthorized));
+                        }
+
+                        try
+                        {
+                            var provider = new System.Net.Http.MultipartMemoryStreamProvider();
+                            request.Content.ReadAsMultipartAsync(provider).Wait();
+
+                            string filename = "";
+                            string pdfFilename = "";
+                            byte[] fileData = null;
+
+                            foreach (var content in provider.Contents)
+                            {
+                                var name = content.Headers.ContentDisposition.Name.Trim('\"');
+                                if (name == "filename")
+                                {
+                                    filename = content.ReadAsStringAsync().Result;
+                                }
+                                else if (name == "pdfFile")
+                                {
+                                    pdfFilename = content.Headers.ContentDisposition.FileName.Trim('\"');
+                                    fileData = content.ReadAsByteArrayAsync().Result;
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(filename) && fileData != null)
+                            {
+                                // Save PDF file
+                                Directory.CreateDirectory(@"c:/pgad/pdf");
+                                File.WriteAllBytes(@"c:/pgad/pdf/" + pdfFilename, fileData);
+
+                                // Update JSON file to reference the PDF
+                                var jsonFilename = filename.Replace(".html", ".json");
+                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                
+                                if (File.Exists(jsonPath))
+                                {
+                                    var jsonContent = File.ReadAllText(jsonPath);
+                                    var jsonData = JObject.Parse(jsonContent);
+                                    
+                                    jsonData["pdfFile"] = "/pdf/" + pdfFilename;
+                                    
+                                    File.WriteAllText(jsonPath, jsonData.ToString(Newtonsoft.Json.Formatting.Indented));
+                                }
+
+                                Console.WriteLine("Uploaded PDF: " + pdfFilename + " for " + filename);
+
+                                var response = new HttpResponseMessage();
+                                response.Content = new StringContent("{\"success\":true,\"pdfFilename\":\"" + pdfFilename + "\"}");
+                                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                                return Task.FromResult(response);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("PDF upload error: " + ex.Message);
+                        }
+                        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest));
+                    }
+
                     // For authorized requests, add to console output
                     if (IsAuthorized(request))
                     {
@@ -186,7 +350,7 @@ namespace RemoteInvoker
                         return GetFile("/index.html", "text/html");
                     }
 
-                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/"))
+                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/") || line.StartsWith("/json/"))
                     {
                         string ext = Path.GetExtension(line);
 
@@ -200,6 +364,7 @@ namespace RemoteInvoker
                             case ".png": return GetFile(line, "image/png");
                             case ".woff2": return GetFile(line, "font/woff2");
                             case ".pdf": return GetFile(line, "application/pdf");
+                            case ".json": return GetFile(line, "application/json");
                         }
                     }
 
