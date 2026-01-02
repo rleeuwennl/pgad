@@ -58,7 +58,10 @@
                                 <input type="file" id="pdf-upload" accept=".pdf" onchange="LiturgieEditor.updatePdfLabel()" />
                                 <span id="pdf-label" style="color: #666; font-size: 13px;"></span>
                             </div>
-                            <button onclick="LiturgieEditor.uploadPDF()" class="liturgie-btn">Upload PDF</button>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="LiturgieEditor.uploadPDF()" class="liturgie-btn">Upload PDF</button>
+                                <button onclick="LiturgieEditor.removePDF()" class="liturgie-btn" style="background-color: #dc3545;">Remove PDF</button>
+                            </div>
                         </div>
                         <div id="liturgie-status" class="liturgie-status"></div>
                     </div>
@@ -108,6 +111,9 @@
                     if (data.pdfFile && data.pdfFile.trim()) {
                         var pdfName = data.pdfFile.split('/').pop(); // Get just the filename
                         $('#pdf-label').text('Huidge bestand: ' + pdfName);
+                    } else {
+                        // Clear the label if no PDF exists
+                        $('#pdf-label').text('');
                     }
                 })
                 .fail(function() {
@@ -215,6 +221,45 @@
             })
             .fail(function() {
                 LiturgieEditor.showStatus('Fout bij uploaden PDF', 'error');
+            });
+        },
+
+        removePDF: function() {
+            if (!confirm('Weet je zeker dat je het PDF wilt verwijderen?')) {
+                return;
+            }
+
+            this.showStatus('PDF wordt verwijderd...', 'info');
+
+            $.ajax({
+                url: '/api/liturgie/remove-pdf',
+                method: 'POST',
+                headers: SimpleAuth.getAuthHeader(),
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    filename: this.currentFile
+                })
+            })
+            .done(function(data) {
+                if (data.success) {
+                    LiturgieEditor.showStatus('✓ PDF verwijderd', 'success');
+                    
+                    // Immediately clear the UI
+                    document.getElementById('pdf-upload').value = '';
+                    $('#pdf-label').text('');
+                    
+                    // Then reload data from server
+                    setTimeout(function() {
+                        if (window.LiturgieDataLoader) {
+                            LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
+                        }
+                        // Reload to ensure UI stays in sync with server
+                        LiturgieEditor.loadCurrentValues();
+                    }, 1000);
+                }
+            })
+            .fail(function() {
+                LiturgieEditor.showStatus('Fout bij verwijderen PDF', 'error');
             });
         },
 

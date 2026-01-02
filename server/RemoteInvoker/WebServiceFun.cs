@@ -314,6 +314,61 @@ namespace RemoteInvoker
                         return Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest));
                     }
 
+                    if (line == "/api/liturgie/remove-pdf" && request.Method == HttpMethod.Post)
+                    {
+                        if (!IsAuthorized(request))
+                        {
+                            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Unauthorized));
+                        }
+
+                        try
+                        {
+                            var json = request.Content.ReadAsStringAsync().Result;
+                            var jsonObj = JObject.Parse(json);
+                            var filename = jsonObj["filename"]?.ToString();
+
+                            if (!string.IsNullOrEmpty(filename))
+                            {
+                                var jsonFilename = filename.Replace(".html", ".json");
+                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                
+                                if (File.Exists(jsonPath))
+                                {
+                                    var jsonContent = File.ReadAllText(jsonPath);
+                                    var jsonData = JObject.Parse(jsonContent);
+                                    var currentPdfPath = jsonData["pdfFile"]?.ToString();
+                                    
+                                    // Remove the PDF file if it exists
+                                    if (!string.IsNullOrEmpty(currentPdfPath))
+                                    {
+                                        var pdfFileToDelete = @"c:/pgad" + currentPdfPath;
+                                        if (File.Exists(pdfFileToDelete))
+                                        {
+                                            File.Delete(pdfFileToDelete);
+                                            Console.WriteLine("Deleted PDF file: " + pdfFileToDelete);
+                                        }
+                                    }
+                                    
+                                    // Clear the pdfFile property in JSON
+                                    jsonData["pdfFile"] = "";
+                                    File.WriteAllText(jsonPath, jsonData.ToString(Newtonsoft.Json.Formatting.Indented));
+                                    
+                                    Console.WriteLine("Removed PDF reference for " + filename);
+
+                                    var response = new HttpResponseMessage();
+                                    response.Content = new StringContent("{\"success\":true}");
+                                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                                    return Task.FromResult(response);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("PDF removal error: " + ex.Message);
+                        }
+                        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest));
+                    }
+
                     // For authorized requests, add to console output
                     if (IsAuthorized(request))
                     {
