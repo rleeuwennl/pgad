@@ -55,10 +55,11 @@
                         <div class="liturgie-editor-section">
                             <label>Upload Liturgie PDF:</label>
                             <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="file" id="pdf-upload" accept=".pdf" onchange="LiturgieEditor.onPdfFileSelected()" />
+                                <label for="pdf-upload" class="liturgie-file-btn">Choose PDF File</label>
+                                <input type="file" id="pdf-upload" accept=".pdf" onchange="LiturgieEditor.onPdfFileSelected()" style="display: none;" />
                                 <span id="pdf-label" style="color: #666; font-size: 13px;"></span>
                             </div>
-                            <div style="display: flex; gap: 10px;">
+                            <div id="pdf-button-container" style="display: flex; gap: 10px; display: none;">
                                 <button onclick="LiturgieEditor.removePDF()" class="liturgie-btn" style="background-color: #dc3545;">Remove PDF</button>
                             </div>
                         </div>
@@ -110,9 +111,12 @@
                     if (data.pdfFile && data.pdfFile.trim()) {
                         var pdfName = data.pdfFile.split('/').pop(); // Get just the filename
                         $('#pdf-label').text('Huidge bestand: ' + pdfName);
+                        // Show the Remove PDF button if PDF exists
+                        $('#pdf-button-container').show();
                     } else {
-                        // Clear the label if no PDF exists
+                        // Clear the label and hide button if no PDF exists
                         $('#pdf-label').text('');
+                        $('#pdf-button-container').hide();
                     }
                 })
                 .fail(function() {

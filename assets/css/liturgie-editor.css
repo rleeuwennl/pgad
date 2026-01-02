@@ -135,6 +135,10 @@
     letter-spacing: 0.5px;
     transition: all 0.2s ease;
     box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
 }
 
 .liturgie-btn:hover {
@@ -144,6 +148,37 @@
 }
 
 .liturgie-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+
+.liturgie-file-btn {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white !important;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    white-space: nowrap;
+}
+
+.liturgie-file-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+}
+
+.liturgie-file-btn:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
 }
