@@ -54,7 +54,10 @@
                         </div>
                         <div class="liturgie-editor-section">
                             <label>Upload Liturgie PDF:</label>
-                            <input type="file" id="pdf-upload" accept=".pdf" />
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="file" id="pdf-upload" accept=".pdf" onchange="LiturgieEditor.updatePdfLabel()" />
+                                <span id="pdf-label" style="color: #666; font-size: 13px;"></span>
+                            </div>
                             <button onclick="LiturgieEditor.uploadPDF()" class="liturgie-btn">Upload PDF</button>
                         </div>
                         <div id="liturgie-status" class="liturgie-status"></div>
@@ -101,10 +104,28 @@
                     if (data.youtubeInsluit) {
                         $('#youtube-insluit').val(data.youtubeInsluit);
                     }
+                    // Display current PDF filename if it exists
+                    if (data.pdfFile && data.pdfFile.trim()) {
+                        var pdfName = data.pdfFile.split('/').pop(); // Get just the filename
+                        $('#pdf-label').text('Huidge bestand: ' + pdfName);
+                    }
                 })
                 .fail(function() {
                     console.log('Could not load JSON data');
                 });
+            }
+        },
+
+        updatePdfLabel: function() {
+            var fileInput = document.getElementById('pdf-upload');
+            var file = fileInput.files[0];
+            var $label = $('#pdf-label');
+            
+            if (file) {
+                $label.text('Nieuw bestand: ' + file.name);
+            } else {
+                // Reload the original PDF name
+                this.loadCurrentValues();
             }
         },
 
@@ -188,6 +209,7 @@
                             LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
                         }
                         document.getElementById('pdf-upload').value = '';
+                        LiturgieEditor.loadCurrentValues(); // Reload to show the new PDF filename
                     }, 1000);
                 }
             })
