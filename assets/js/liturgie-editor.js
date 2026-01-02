@@ -99,7 +99,7 @@
                 
                 // Fetch JSON data
                 $.ajax({
-                    url: '/json/' + jsonFile,
+                    url: '/liturgie/json/' + jsonFile,
                     dataType: 'json'
                 })
                 .done(function(data) {
@@ -149,18 +149,16 @@
         updateInsluit: function() {
             var youtubeInsluit = $('#youtube-insluit').val().trim();
             
-            if (!youtubeInsluit) {
-                this.showStatus('Voer insluit code in', 'error');
-                return;
-            }
-
-            // Basic validation - check if it looks like iframe HTML
-            if (!youtubeInsluit.toLowerCase().includes('iframe')) {
+            // Allow empty value to delete the insluit code
+            // Only validate if not empty
+            if (youtubeInsluit && !youtubeInsluit.toLowerCase().includes('iframe')) {
                 this.showStatus('Dit ziet er niet uit als een iframe code', 'error');
                 return;
             }
 
-            this.showStatus('Insluit code wordt bijgewerkt...', 'info');
+            // Show appropriate message based on whether we're adding or deleting
+            var statusMsg = youtubeInsluit ? 'Insluit code wordt bijgewerkt...' : 'Insluit code wordt verwijderd...';
+            this.showStatus(statusMsg, 'info');
 
             $.ajax({
                 url: '/api/liturgie/update-insluit',
@@ -174,19 +172,40 @@
             })
             .done(function(data) {
                 if (data.success) {
-                    LiturgieEditor.showStatus('✓ Insluit code bijgewerkt!', 'success');
-                    // Reload data from JSON and update iframe
-                    setTimeout(function() {
-                        if (window.LiturgieDataLoader) {
-                            LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
-                        }
-                        LiturgieEditor.loadCurrentValues();
-                    }, 1000);
+                    var successMsg = youtubeInsluit ? '✓ Insluit code bijgewerkt!' : '✓ Insluit code verwijderd!';
+                    LiturgieEditor.showStatus(successMsg, 'success');
+                    
+                    // If deleting insluit code, refresh entire page
+                    if (!youtubeInsluit) {
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        // If updating, just reload the data
+                        setTimeout(function() {
+                            if (window.LiturgieDataLoader) {
+                                LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
+                            }
+                            LiturgieEditor.loadCurrentValues();
+                        }, 1000);
+                    }
                 }
             })
             .fail(function() {
                 LiturgieEditor.showStatus('Fout bij bijwerken insluit code', 'error');
             });
+        },
+
+        removeYoutubeInsluit: function() {
+            if (!confirm('Weet je zeker dat je de YouTube insluit code wilt verwijderen?')) {
+                return;
+            }
+            
+            // Clear the textarea
+            $('#youtube-insluit').val('');
+            
+            // Call updateInsluit to save the empty value
+            this.updateInsluit();
         },
 
         uploadPDF: function() {

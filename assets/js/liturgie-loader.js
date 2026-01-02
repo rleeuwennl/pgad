@@ -5,7 +5,7 @@
     window.LiturgieDataLoader = {
         loadData: function(htmlFilename) {
             var jsonFilename = htmlFilename.replace('.html', '.json');
-            var jsonUrl = '/json/' + jsonFilename;
+            var jsonUrl = '/liturgie/json/' + jsonFilename;
 
             $.ajax({
                 url: jsonUrl,

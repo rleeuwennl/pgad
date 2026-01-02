@@ -54,7 +54,7 @@
 
     // Load and apply data
     function loadAndApplyData() {
-        var jsonFile = '/json/litturgie_1jan2026.json?t=' + Date.now();
+        var jsonFile = '/liturgie/json/litturgie_4jan2026.json?t=' + Date.now();
         console.log('Loading from:', jsonFile);
         
         var xhr = new XMLHttpRequest();
@@ -85,7 +85,7 @@
 <article class="box post">
     <header class="style1">
         <h2></h2>
-        <p>1 Januari 10.30 uur<br>ds. René Wichers-Kaat</p>
+        <p>4 Januari 10.00 uur<br>ds. Elise Wijnands</p>
     </header>
 
     <!-- Live Section -->
@@ -107,4 +107,5 @@
     <section id="pdf-section" style="margin-top: 2em; display: none;">
         <h3></h3>
         <iframe id="pdf-frame" src="" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
+    </section>
 </article>

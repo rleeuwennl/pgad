@@ -172,7 +172,7 @@ namespace RemoteInvoker
                             {
                                 // Extract base filename without .html extension
                                 var jsonFilename = filename.Replace(".html", ".json");
-                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                var jsonPath = @"c:/pgad/liturgie/json/" + jsonFilename;
                                 
                                 if (File.Exists(jsonPath))
                                 {
@@ -218,11 +218,11 @@ namespace RemoteInvoker
                             var filename = jsonObj["filename"]?.ToString();
                             var youtubeInsluit = jsonObj["youtubeInsluit"]?.ToString();
                             
-                            if (!string.IsNullOrEmpty(filename) && !string.IsNullOrEmpty(youtubeInsluit))
+                            if (!string.IsNullOrEmpty(filename) )
                             {
                                 // Extract base filename without .html extension
                                 var jsonFilename = filename.Replace(".html", ".json");
-                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                var jsonPath = @"c:/pgad/liturgie/json/" + jsonFilename;
                                 
                                 if (File.Exists(jsonPath))
                                 {
@@ -282,19 +282,19 @@ namespace RemoteInvoker
                             if (!string.IsNullOrEmpty(filename) && fileData != null)
                             {
                                 // Save PDF file
-                                Directory.CreateDirectory(@"c:/pgad/pdf");
-                                File.WriteAllBytes(@"c:/pgad/pdf/" + pdfFilename, fileData);
+                                Directory.CreateDirectory(@"c:/pgad/liturgie/pdf");
+                                File.WriteAllBytes(@"c:/pgad/liturgie/pdf/" + pdfFilename, fileData);
 
                                 // Update JSON file to reference the PDF
                                 var jsonFilename = filename.Replace(".html", ".json");
-                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                var jsonPath = @"c:/pgad/liturgie/json/" + jsonFilename;
                                 
                                 if (File.Exists(jsonPath))
                                 {
                                     var jsonContent = File.ReadAllText(jsonPath);
                                     var jsonData = JObject.Parse(jsonContent);
                                     
-                                    jsonData["pdfFile"] = "/pdf/" + pdfFilename;
+                                    jsonData["pdfFile"] = "/liturgie/pdf/" + pdfFilename;
                                     
                                     File.WriteAllText(jsonPath, jsonData.ToString(Newtonsoft.Json.Formatting.Indented));
                                 }
@@ -330,7 +330,7 @@ namespace RemoteInvoker
                             if (!string.IsNullOrEmpty(filename))
                             {
                                 var jsonFilename = filename.Replace(".html", ".json");
-                                var jsonPath = @"c:/pgad/json/" + jsonFilename;
+                                var jsonPath = @"c:/pgad/liturgie/json/" + jsonFilename;
                                 
                                 if (File.Exists(jsonPath))
                                 {
@@ -405,7 +405,7 @@ namespace RemoteInvoker
                         return GetFile("/index.html", "text/html");
                     }
 
-                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/") || line.StartsWith("/json/"))
+                    if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/") || line.StartsWith("/json/") || line.StartsWith("/liturgie/"))
                     {
                         string ext = Path.GetExtension(line);
 
