@@ -42,6 +42,11 @@
 			if (!$c.length) return;
 			$c.fadeOut(120, function(){
 				$c.html(html).fadeIn(150);
+				// Scroll to top to show beginning of new content
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
 			});
 		}
 

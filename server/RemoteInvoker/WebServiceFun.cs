@@ -18,11 +18,18 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Web;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RemoteInvoker
 {
     class WebServiceFun
     {
+        // Simple in-memory token store (valid tokens)
+        private static HashSet<string> validTokens = new HashSet<string>();
+        private static readonly string ADMIN_USERNAME = "admin";
+        private static readonly string ADMIN_PASSWORD = "pgad2026"; // Change this!
+
         // see: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/http-message-handlers
         public class ApiKeyHandler : DelegatingHandler
         {
@@ -30,6 +37,20 @@ namespace RemoteInvoker
             public ApiKeyHandler()
             {
 
+            }
+
+            /// <summary>
+            /// Check if request has valid authorization token
+            /// </summary>
+            private bool IsAuthorized(HttpRequestMessage request)
+            {
+                IEnumerable<string> authHeaders;
+                if (request.Headers.TryGetValues("X-Auth-Token", out authHeaders))
+                {
+                    var token = authHeaders.FirstOrDefault();
+                    return !string.IsNullOrEmpty(token) && validTokens.Contains(token);
+                }
+                return false;
             }
 
             private HttpResponseMessage GetHtml(string filename)
@@ -82,6 +103,61 @@ namespace RemoteInvoker
                     string line = request.RequestUri.LocalPath;
                     bool isFragmentRequest = request.Headers.Contains("X-Fragment-Request");
                     string path = Path.GetDirectoryName(line);
+
+                    // Handle authorization endpoints
+                    if (line == "/api/auth/login")
+                    {
+                        try
+                        {
+                            var json = request.Content.ReadAsStringAsync().Result;
+                            // Simple JSON parsing for username and password
+                            var userMatch = System.Text.RegularExpressions.Regex.Match(json, "\"username\"\\s*:\\s*\"([^\"]+)\"");
+                            var passMatch = System.Text.RegularExpressions.Regex.Match(json, "\"password\"\\s*:\\s*\"([^\"]+)\"");
+                            
+                            var username = userMatch.Success ? userMatch.Groups[1].Value : "";
+                            var password = passMatch.Success ? passMatch.Groups[1].Value : "";
+
+                            if (username == ADMIN_USERNAME && password == ADMIN_PASSWORD)
+                            {
+                                var token = Guid.NewGuid().ToString();
+                                validTokens.Add(token);
+                                var response = new HttpResponseMessage();
+                                response.Content = new StringContent("{\"success\":true,\"token\":\"" + token + "\"}");
+                                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                                Console.WriteLine("Login successful for: " + username);
+                                return Task.FromResult(response);
+                            }
+                            Console.WriteLine("Login failed - invalid credentials");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Login error: " + ex.Message);
+                        }
+                        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Unauthorized));
+                    }
+
+                    if (line == "/api/auth/logout")
+                    {
+                        IEnumerable<string> authHeaders;
+                        if (request.Headers.TryGetValues("X-Auth-Token", out authHeaders))
+                        {
+                            var token = authHeaders.FirstOrDefault();
+                            validTokens.Remove(token);
+                        }
+                        var response = new HttpResponseMessage();
+                        response.Content = new StringContent("{\"success\":true}");
+                        response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                        return Task.FromResult(response);
+                    }
+
+                    // For authorized requests, add to console output
+                    if (IsAuthorized(request))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(" [AUTHORIZED]");
+                        Console.ResetColor();
+                    }
+
                     if (line == "/")
                     {
                         string countersFile = "counters.txt";
