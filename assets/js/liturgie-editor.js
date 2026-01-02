@@ -55,11 +55,10 @@
                         <div class="liturgie-editor-section">
                             <label>Upload Liturgie PDF:</label>
                             <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="file" id="pdf-upload" accept=".pdf" onchange="LiturgieEditor.updatePdfLabel()" />
+                                <input type="file" id="pdf-upload" accept=".pdf" onchange="LiturgieEditor.onPdfFileSelected()" />
                                 <span id="pdf-label" style="color: #666; font-size: 13px;"></span>
                             </div>
                             <div style="display: flex; gap: 10px;">
-                                <button onclick="LiturgieEditor.uploadPDF()" class="liturgie-btn">Upload PDF</button>
                                 <button onclick="LiturgieEditor.removePDF()" class="liturgie-btn" style="background-color: #dc3545;">Remove PDF</button>
                             </div>
                         </div>
@@ -132,6 +131,18 @@
             } else {
                 // Reload the original PDF name
                 this.loadCurrentValues();
+            }
+        },
+
+        onPdfFileSelected: function() {
+            var fileInput = document.getElementById('pdf-upload');
+            var file = fileInput.files[0];
+            
+            if (file) {
+                // Show the selected filename
+                $('#pdf-label').text('Nieuw bestand: ' + file.name);
+                // Automatically upload the PDF
+                this.uploadPDF();
             }
         },
 
@@ -242,20 +253,12 @@
             })
             .done(function(data) {
                 if (data.success) {
-                    LiturgieEditor.showStatus('✓ PDF verwijderd', 'success');
+                    LiturgieEditor.showStatus('✓ PDF verwijderd - pagina wordt ververst...', 'success');
                     
-                    // Immediately clear the UI
-                    document.getElementById('pdf-upload').value = '';
-                    $('#pdf-label').text('');
-                    
-                    // Then reload data from server
+                    // Refresh the entire page after a short delay
                     setTimeout(function() {
-                        if (window.LiturgieDataLoader) {
-                            LiturgieDataLoader.loadData(LiturgieEditor.currentFile);
-                        }
-                        // Reload to ensure UI stays in sync with server
-                        LiturgieEditor.loadCurrentValues();
-                    }, 1000);
+                        location.reload();
+                    }, 1500);
                 }
             })
             .fail(function() {
