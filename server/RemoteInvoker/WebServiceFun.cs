@@ -28,8 +28,8 @@ namespace RemoteInvoker
     {
         // Simple in-memory token store (valid tokens)
         private static HashSet<string> validTokens = new HashSet<string>();
-        private static readonly string ADMIN_USERNAME = "admin";
-        private static readonly string ADMIN_PASSWORD = "pgad2026"; // Change this!
+        private static readonly string ADMIN_USERNAME = "pgad";
+        private static readonly string ADMIN_PASSWORD = "JezusIsKoning!"; // Change this!
 
         // see: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/http-message-handlers
         public class ApiKeyHandler : DelegatingHandler
