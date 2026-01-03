@@ -134,7 +134,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiKeyHandler.cs" />
     <Compile Include="CheckRouteManagerLicenses.cs" />
+    <Compile Include="EExtendedHttpSelfHostConfigurationPublic.cs" />
     <Compile Include="GenerateHtmlPages.cs" />
     <Compile Include="MailLogger.cs" />
     <Compile Include="PpeWebServiceController.cs" />
