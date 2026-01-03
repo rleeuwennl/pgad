@@ -89,9 +89,14 @@
 			var link = e.target.closest('#nav a, #navPanel a, [data-fragment]');
 			if (!link) return;
 
-			// Skip external links (http://, https://, mailto:, etc.)
+			// Skip links with onclick handlers (like login)
+			if (link.hasAttribute('onclick')) {
+				return;
+			}
+
+			// Skip external links (http://, https://, mailto:, javascript:, etc.)
 			var href = link.getAttribute('href') || '';
-			if (href.match(/^(https?:|mailto:)/i)) {
+			if (href.match(/^(https?:|mailto:|javascript:)/i)) {
 				return; // Let browser handle external links normally
 			}
 
@@ -112,11 +117,10 @@
 
 			var frag = link.getAttribute('data-fragment');
 			if (!frag) {
-				var linkText = normalizeText(link.textContent);
-				frag = linkText && (linkText + '.html');
+				// Only load fragments for links with explicit data-fragment attribute
+				// This prevents accidental loading of pages for submenu headers
+				return;
 			}
-
-			if (!frag) return;
 
 			e.preventDefault();
 			e.stopPropagation();
