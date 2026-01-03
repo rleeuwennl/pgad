@@ -135,11 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiKeyHandler.cs" />
-    <Compile Include="CheckRouteManagerLicenses.cs" />
     <Compile Include="EExtendedHttpSelfHostConfigurationPublic.cs" />
-    <Compile Include="GenerateHtmlPages.cs" />
-    <Compile Include="MailLogger.cs" />
-    <Compile Include="PpeWebServiceController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -147,18 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Pst3Generator.cs" />
-    <Compile Include="RemoteApp.cs" />
-    <Compile Include="Bom.cs" />
-    <Compile Include="OpManual.cs" />
-    <Compile Include="ViewSpareParts.cs" />
-    <Compile Include="TestReport.cs" />
-    <Compile Include="Schematics.cs" />
-    <Compile Include="PpeWebPage.cs" />
-    <Compile Include="ViewInfo.cs" />
-    <Compile Include="ViewXml.cs" />
     <Compile Include="WebServiceFun.cs" />
-    <Compile Include="WindowsInterop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -182,17 +167,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ascs.html" />
-    <Content Include="ascs_agent_logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="info.html" />
-    <Content Include="main.html" />
-    <Content Include="ppewebservice.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
