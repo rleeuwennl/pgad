@@ -5,12 +5,15 @@
     var SimpleAuth = {
         token: null,
         isAuthenticated: false,
+        inactivityTimeout: 10 * 60 * 1000, // 10 minutes in milliseconds
+        inactivityTimer: null,
 
         init: function() {
             this.token = localStorage.getItem('pgad_token');
             if (this.token) {
                 this.isAuthenticated = true;
                 this.showAuthUI();
+                this.startInactivityTimer();
             }
 
             // Create login modal HTML
@@ -25,6 +28,33 @@
                     }
                 }
             });
+
+            // Track user activity to reset inactivity timer
+            $(document).on('mousedown keydown click', function() {
+                if (SimpleAuth.isAuthenticated) {
+                    SimpleAuth.resetInactivityTimer();
+                }
+            });
+        },
+
+        startInactivityTimer: function() {
+            this.inactivityTimer = setTimeout(function() {
+                if (SimpleAuth.isAuthenticated) {
+                    console.log('User inactive for 10 minutes. Logging out...');
+                    SimpleAuth.logout();
+                }
+            }, this.inactivityTimeout);
+        },
+
+        resetInactivityTimer: function() {
+            // Clear existing timer
+            if (this.inactivityTimer) {
+                clearTimeout(this.inactivityTimer);
+            }
+            // Start a new timer
+            if (this.isAuthenticated) {
+                this.startInactivityTimer();
+            }
         },
 
         createLoginModal: function() {
@@ -86,6 +116,7 @@
                     localStorage.setItem('pgad_token', SimpleAuth.token);
                     SimpleAuth.closeLoginModal();
                     SimpleAuth.showAuthUI();
+                    SimpleAuth.startInactivityTimer();
                     console.log('Authorized token: ' + SimpleAuth.token);
                     // Refresh the page after successful login
                     setTimeout(function() {
@@ -101,6 +132,12 @@
         },
 
         logout: function() {
+            // Clear inactivity timer
+            if (this.inactivityTimer) {
+                clearTimeout(this.inactivityTimer);
+                this.inactivityTimer = null;
+            }
+
             $.ajax({
                 url: '/api/auth/logout',
                 method: 'POST',
