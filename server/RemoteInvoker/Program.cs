@@ -31,7 +31,7 @@ namespace RemoteInvoker
         }
         static void Main(string[] args)
         {
-            WebServiceFun.StartWebService();
+            WebService.StartWebService();
             Console.Write("Press any key to exit application");
             while (IsRunning)
             {

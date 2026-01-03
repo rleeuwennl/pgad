@@ -134,8 +134,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiKeyHandler.cs" />
-    <Compile Include="EExtendedHttpSelfHostConfigurationPublic.cs" />
+    <Compile Include="RequestHandler.cs" />
+    <Compile Include="ExtendHttpSelfHostConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -143,7 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WebServiceFun.cs" />
+    <Compile Include="WebService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

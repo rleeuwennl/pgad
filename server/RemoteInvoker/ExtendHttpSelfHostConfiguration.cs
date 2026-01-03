@@ -4,9 +4,9 @@ using System.Web.Http.SelfHost;
 using System.ServiceModel.Channels;
 using System.Web.Http.SelfHost.Channels;
 
-internal class EExtendHttpSelfHostConfigurationpublic : HttpSelfHostConfiguration
+internal class ExtendHttpSelfHostConfiguration : HttpSelfHostConfiguration
 {
-    public EExtendHttpSelfHostConfigurationpublic(Uri baseAddress) : base(baseAddress)
+    public ExtendHttpSelfHostConfiguration(Uri baseAddress) : base(baseAddress)
     {
     }
     protected override BindingParameterCollection OnConfigureBinding(HttpBinding httpBinding)

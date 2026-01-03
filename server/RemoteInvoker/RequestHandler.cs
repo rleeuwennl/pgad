@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 // see: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/http-message-handlers
-public class ApiKeyHandler : DelegatingHandler
+public class RequestHandler : DelegatingHandler
 {
     private int vistitors = 0;
     // Simple in-memory token store (valid tokens)
@@ -19,7 +19,7 @@ public class ApiKeyHandler : DelegatingHandler
     private static readonly string ADMIN_PASSWORD = "JezusIsKoning!"; // Change this!
 
 
-    public ApiKeyHandler()
+    public RequestHandler()
     {
 
     }

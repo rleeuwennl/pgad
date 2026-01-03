@@ -4,7 +4,7 @@ using System.Web.Http;
 
 namespace RemoteInvoker
 {
-    class WebServiceFun
+    class WebService
     {
 
   
@@ -27,7 +27,7 @@ namespace RemoteInvoker
               routeTemplate: "api/{controller}/{id}",
               defaults: new { id = RouteParameter.Optional }
             );
-            config.MessageHandlers.Add(new ApiKeyHandler());
+            config.MessageHandlers.Add(new RequestHandler());
 
 
             // Create server
