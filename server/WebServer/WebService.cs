@@ -5,9 +5,7 @@ using System.Web.Http;
 namespace RemoteInvoker
 {
     class WebService
-    {
-
-  
+    {  
         public static void StartWebService()
         {
             /*
