@@ -3,10 +3,27 @@ The pgad.dsea.nl certificate is located at https://encryptssl.com/dashboard
 
 rem C:\pgad>py -3 -m http.server 8
 rem https://encryptssl.com/   certificate for pgad.dsea.nl
+
+* in bash:
 openssl pkcs12 -export out pgad.dsea.nl.pfx -inkey pgad.dsea.nl.key -in pgad.dsea.nl.crt
 
 
 PFX password Anneloes123!
 
-PS C:\pgad> (Get-PfxCertificate -FilePath .\pgad.dsea.nl.pfx -Password (ConvertTo-SecureString "Anneloes123!" -AsPlainText -Force)).Thumbprint
+### Renew SSL Certificate
+* Open Powershell as admin:
+  certutil -importPFX .\pgad.dsea.nl.pfx    	
+    pass:n Anneloes123!
 
+
+(Get-PfxCertificate -FilePath .\pgad.dsea.nl.pfx ).Thumbprint
+* Open the wildcard certificate to get the Thumbprint and copy this as “certhash“ in the next step.
+
+* In Powershell, go to netsh mode:
+  netsh
+  http delete sslcert ipport=0.0.0.0:443
+  http add sslcert ipport=0.0.0.0:443 certhash=2b80fa893ffa9a0a32e3a7f6a32f1925a5896cf7 appid={b4cda6bb-daf4-4db8-af9a-02d52e72a83d}
+  exit
+
+* In a browser open:
+  https://nlhlelec01.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=main
