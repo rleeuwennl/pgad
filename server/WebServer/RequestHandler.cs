@@ -55,6 +55,16 @@ public class RequestHandler : DelegatingHandler
         return response;
     }
 
+    private string CreateDefaultLiturgieJson()
+    {
+        var jsonObject = new JObject
+        {
+            { "youtubeInsluit", "" },
+            { "pdfFile", "" }
+        };
+        return jsonObject.ToString(Newtonsoft.Json.Formatting.Indented);
+    }
+
     private async Task<HttpResponseMessage> GetFile(string file, string mime)
     {
 
@@ -62,7 +72,26 @@ public class RequestHandler : DelegatingHandler
 
         if (!System.IO.File.Exists(file))
         {
-            return null;
+            // Create default JSON for liturgie files if they don't exist
+            if (Path.GetExtension(file) == ".json" && file.Contains("liturgie"))
+            {
+                try
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(file));
+                    var defaultJson = CreateDefaultLiturgieJson();
+                    File.WriteAllText(file, defaultJson);
+                    Console.WriteLine("Created default liturgie JSON: " + file);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error creating default JSON: " + ex.Message);
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
 
         if (Path.GetExtension(file) == ".html")

@@ -4,52 +4,91 @@
 Purpose
 - Help contributors quickly understand this repo's structure, key workflows, and editing constraints so AI agents can be productive immediately.
 
-High-level architecture
-- Root: a static website (HTML/CSS/JS) served from the repository root (see [index.html](index.html)).
-- `server/`: a .NET Web API/self-hosting service (solution: [server/PpeWebService.sln](server/PpeWebService.sln)). The service exposes endpoints under `/api/PpeWebService` (see [server/README.md](server/README.md)).
-- `certificate/`: local SSL artifacts used by the service; certificate operations are documented in [server/README.md](server/README.md).
+## Architecture Overview
 
-Where to look (examples)
-- UI entry: [index.html](index.html)
-- Front-end assets: `assets/css/`, `assets/js/`, `assets/sass/` (example SCSS: [assets/sass/main.scss](assets/sass/main.scss))
-- Server code & solution: [server/PpeWebService.sln](server/PpeWebService.sln) and the `server/` subfolders (source and packages).
-- Project notes: [readme.txt](readme.txt) and [server/README.md](server/README.md)
+**PGAD** is a church website (Protestantse Gemeente Angerlo-Doesburg) with:
+1. **Static frontend**: HTML/CSS/JS at root; content loaded dynamically via `data-fragment` links (see [assets/js/main.js](assets/js/main.js)).
+2. **Self-hosted .NET API**: [server/WebServer.sln](server/WebServer.sln) (targets .NET 4.7.2) serves requests at `/api/` endpoints.
+3. **Content modules**: `html/` (pages), `liturgie/` (worship schedules with JSON metadata), `pdf/` (documents).
+4. **Authorization**: Simple token system (see [SIMPLE_AUTH.md](SIMPLE_AUTH.md)) — password-protected edits via `X-Auth-Token` header.
 
-Build / run guidance (discoverable steps)
-- Static site: open `index.html` in a browser or serve the root directory with a static HTTP server.
-- Server: open `server/PpeWebService.sln` in Visual Studio (recommended) and build/run. The repo includes a `packages/` folder, so a NuGet restore may be unnecessary; if missing, run NuGet restore or use Visual Studio's restore feature.
-- SSL/certificates: follow the exact commands in [server/README.md](server/README.md) for creating/importing PFX and applying `netsh` bindings. These steps require Windows admin privileges and access to `c:/pgad/certificate`.
+## Key Components & Data Flow
 
-Project-specific conventions and patterns
-- Static assets stay under `assets/` and are referenced by relative paths in `index.html`.
-- SASS sources live in `assets/sass/` and are compiled into `assets/css/` (no automatic build script present in repo).
-- Server uses ASP.NET Web API self-hosting (older Web API packages present under `server/packages/`). Expect classic .NET tooling (Visual Studio / msbuild), not dotnet CLI for modern .NET Core projects.
-- API surface: requests use query parameters (example from README): `...?cmd=WebPage&arg=main` — be cautious changing dispatch logic without end-to-end tests.
+**Frontend Navigation** ([index.html](index.html))
+- Menu links with `data-fragment="html/page.html"` trigger dynamic page loads.
+- [assets/js/main.js](assets/js/main.js) intercepts clicks, fetches fragment HTML via GET, injects into `#main` div.
+- No full page reload — SPA-like behavior for navigation.
 
-Integration points & external dependencies
-- External domain/cert: `dsea.nl` (certificate notes in `server/README.md`).
-- The server exposes an HTTP API consumed by the front end or other apps — do not change routes without verifying callers.
-- The repository contains third-party libraries under `server/packages/` (NuGet). Maintain that folder when editing server projects unless you intentionally migrate to package restore.
+**Server Routing** ([server/WebServer/RequestHandler.cs](server/WebServer/RequestHandler.cs))
+- Handles file serving (HTML, CSS, JS, images, PDFs) from `c:/pgad/`.
+- Exposes `/api/auth/*` (login/logout), `/api/liturgie/*` (worship schedule edits).
+- Authorization checked via `IsAuthorized()` helper; valid tokens stored in-memory.
 
-Secrets and safety
-- `server/README.md` and `certificate/` contain sensitive details (thumbprints, example passwords). Treat them as secrets — do not commit new credentials. If you find credentials in plaintext, flag them and suggest moving to a secure store.
+**Liturgie Editor** ([assets/js/liturgie-editor.js](assets/js/liturgie-editor.js))
+- Admin-only feature: POST to `/api/liturgie/update-insluit`, `/api/liturgie/upload-pdf`, `/api/liturgie/remove-pdf`.
+- Reads/writes JSON from `liturgie/json/` and PDFs from `liturgie/pdf/`.
+- Requires valid auth token; requires form-data with `Content-Type: application/x-www-form-urlencoded` (check usage).
 
-Tests and CI
-- There are no discoverable automated tests or CI configs in the root (except a `server/bitbucket-pipelines.yml` inside `server/`). Expect manual verification when changing behavior.
+## Project-Specific Conventions
 
-When making changes
-- For front-end edits: modify files under `assets/` and validate by loading `index.html` locally.
-- For server edits: open `server/PpeWebService.sln`, build, and run locally. Use the URLs shown in `server/README.md` to validate endpoints.
-- Avoid modifying `server/packages/` unless you update build instructions and verify the solution still builds on CI/dev machines.
+1. **File serving**: Paths are absolute (`c:/pgad/...`) on Windows; always validate existence before reading.
+2. **HTML fragments**: All reusable pages live in `html/` and are loaded client-side via `data-fragment` attribute (not server-side rendering).
+3. **Authorization**: Password in [server/WebServer/RequestHandler.cs](server/WebServer/RequestHandler.cs) line ~18 (`ADMIN_PASSWORD`). Tokens are UUIDs stored in static `validTokens` HashSet (in-memory, lost on restart).
+4. **SASS build**: Sources in `assets/sass/main.scss` → compiled CSS in `assets/css/main.css`. No automatic build script; compile manually or use a tool.
+5. **SSL/HTTPS**: Certificates in `certificate/`; certificate hash and `netsh` binding commands in [server/README.md](server/README.md). Requires Windows admin privileges.
 
-If unsure, ask the maintainer for:
-- which Visual Studio version to target for `PpeWebService.sln`.
-- whether it's safe to replace the certificate workflow with automated tooling.
+## Workflow: Running Locally
 
-Useful links in this repo
-- [index.html](index.html)
-- [readme.txt](readme.txt)
-- [server/README.md](server/README.md)
-- [server/PpeWebService.sln](server/PpeWebService.sln)
+**Static site only:**
+```
+Open index.html in browser or serve root with `python -m http.server 8000` (or similar).
+```
 
-End.
+**With server (HTTPS required):**
+1. Set up SSL certificate: follow [server/README.md](server/README.md) (import PFX, run `netsh` commands as admin).
+2. Open [server/WebServer.sln](server/WebServer.sln) in Visual Studio.
+3. Restore NuGet packages if needed (`packages/` folder may contain local copies).
+4. Build and run; server listens on `https://localhost:443/` (or port specified in [server/WebServer/Program.cs](server/WebServer/Program.cs)).
+5. Test: `https://nlhlelec01.aebi-schmidt.com/api/PpeWebService?cmd=WebPage&arg=main` (or local IP).
+
+## Common Tasks
+
+**Add a new page:**
+- Create `html/my-page.html` (fragments only, no `<html>` wrapper).
+- Add menu link to [index.html](index.html): `<a href="#" data-fragment="html/my-page.html">Link Text</a>`.
+- No server restart needed.
+
+**Edit liturgy/worship schedule:**
+- Place JSON in `liturgie/json/`, HTML in `liturgie/html/`, PDF in `liturgie/pdf/`.
+- Admin must be authorized (Ctrl+Shift+L) to edit via editor UI.
+- Server validates authorization before allowing updates.
+
+**Update API endpoint:**
+- Modify [server/WebServer/RequestHandler.cs](server/WebServer/RequestHandler.cs) or add new handler methods.
+- Test authorization flow: mock `X-Auth-Token` header in requests.
+- Do not change `/api/auth/*` routes without updating [assets/js/simpleauth.js](assets/js/simpleauth.js).
+
+## Secrets & Safety
+
+⚠️ **Credentials in plaintext:** [server/README.md](server/README.md) and [server/WebServer/RequestHandler.cs](server/WebServer/RequestHandler.cs) contain passwords and certificate hashes. Do NOT commit new credentials; flag and escalate to maintainer.
+
+## Testing & Debugging
+
+- **No automated tests present.** Verify changes manually:
+  - Front-end: load `index.html` in browser, test navigation and form submissions.
+  - Server: run locally, check console output for `[OK]` / `[AUTHORIZED]` tags.
+  - Auth flow: use browser DevTools to inspect `X-Auth-Token` header in requests.
+
+## External Dependencies
+
+- **Domain/SSL**: `dsea.nl` (certificate renewal every year ~March; coordinate with IT).
+- **Third-party NuGet**: `AspNetWebApi.SelfHost`, `MailKit`, `BouncyCastle` (in `server/packages/`).
+
+## Useful Links
+
+- [index.html](index.html) — entry point
+- [server/WebServer.sln](server/WebServer.sln) — .NET solution
+- [server/README.md](server/README.md) — SSL/certificate setup
+- [SIMPLE_AUTH.md](SIMPLE_AUTH.md) — authorization details
+- [assets/js/main.js](assets/js/main.js) — SPA navigation logic
+- [server/WebServer/RequestHandler.cs](server/WebServer/RequestHandler.cs) — API routing
