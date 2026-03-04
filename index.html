@@ -134,55 +134,57 @@
 												</section>
 											</div>
 -->
-											<div class="col-6 col-12-small"   >
-												<section class="box">
+										
+
+												<div class="col-6 col-12-small"   >
+												<section class="box" data-date="1mar2026" data-time="10.00 uur" data-location="Martinikerk" data-preacher="ds. Elise Wijnands">
 													<header>
 														<h2>Viering Martinikerk</h2>
 													</header>
-													<a href="#" data-fragment="liturgie/html/litturgie_25jan2026.html" class="image featured"><img src="images/grandia.jpg" alt="" /></a>
-													<p>25 Januari 10.00 uur Martinikerk<br>ds. Bram Grandia, 50 jarig jubileum als predikant 🥳</p>
+													<a href="#" class="image featured"><img src="images/ds_elise_wijnands.jpg" alt="" /></a>
+													<p></p>
 												</section>
 											</div>
 
 											<div class="col-6 col-12-small"   >
-												<section class="box">
+												<section class="box" data-date="8mar2026" data-time="10.00 uur" data-location="Martinikerk" data-preacher="ds. Els de Clercq en ds. Elise Wijnands">
 													<header>
-														<h2>Viering Martinikerk</h2>
+														<h2>Oecumenische Viering Martinikerk</h2>
 													</header>
-													<a href="#" data-fragment="liturgie/html/litturgie_1feb2026.html" class="image featured"><img src="images/ds_elise_wijnands.jpg" alt="" /></a>
-													<p>1 Februari 10.00 uur Martinikerk<br>ds. Elise Wijnands</p>
+													<a href="#" class="image featured"><img src="images/litturgie_martinikerk.jpg" alt="" /></a>
+													<p></p>
 												</section>
 											</div>
 											<div class="col-6 col-12-small"   >
-												<section class="box">
+												<section class="box" data-date="15mar2026" data-time="10.00 uur" data-location="Galluskerk" data-preacher="ds. Bert Bomer">
 													<header>
-														<h2>Viering Martinikerk</h2>
+														<h2>Viering Galluskerk</h2>
 													</header>
-													<a href="#" data-fragment="liturgie/html/litturgie_8feb2026.html" class="image featured"><img src="images/ds_regina_lafeber.jpg" alt="" /></a>
-													<p>8 Februari 10.00 uur<br>ds. Regina Lafeber</p>
-												</section>
-											</div>
-
-
-											<div class="col-6 col-12-small"   >
-												<section class="box">
-													<header>
-														<h2>Viering Martinikerk</h2>
-													</header>
-													<a href="#" data-fragment="liturgie/html/litturgie_15feb2026.html" class="image featured"><img src="images/drs_rini_van_dijkhuizen.jpg" alt="" /></a>
-													<p>15 Februari 10.00 uur<br>drs. Rini van Dijkhuizen</p>
+													<a href="#" class="image featured"><img src="images/ds_bert_bomer.jpg" alt="" /></a>
+													<p></p>
 												</section>
 											</div>
 
 											<div class="col-6 col-12-small"   >
-												<section class="box">
+												<section class="box" data-date="22mar2026" data-time="10.00 uur" data-location="Galluskerk" data-preacher="ds. Roelie Reiling">
 													<header>
-														<h2>Viering Martinikerk</h2>
+														<h2>Viering Galluskerk</h2>
 													</header>
-													<a href="#" data-fragment="liturgie/html/litturgie_22feb2026.html" class="image featured"><img src="images/litturgie_martinikerk.jpg" alt="" /></a>
-													<p>22 Februari 10.00 uur<br>ds. Elise Wijnands</p>
+													<a href="#" class="image featured"><img src="images/drs_rini_van_dijkhuizen.jpg" alt="" /></a>
+													<p></p>
 												</section>
 											</div>
+
+                                            <div class="col-6 col-12-small"   >
+											<section class="box" data-date="29mar2026" data-time="10.00 uur" data-location="Galluskerk" data-preacher="ds. Anton Stegeman">
+													<header>
+														<h2>Viering Galluskerk</h2>
+													</header>
+													<a href="#" class="image featured"><img src="images/galluskerk.jpg" alt="" /></a>
+													<p></p>
+												</section>
+											</div>
+
 
 										</div>
 									</div>
@@ -359,4 +361,42 @@
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>		<script src="/assets/js/liturgie-loader.js"></script>			<script src="/assets/js/simpleauth.js"></script>
 		<script src="/assets/js/liturgie-editor.js"></script>
+		<script>
+			function formatDate(dateStr) {
+				const months = {
+					'jan': 'Januari',
+					'feb': 'Februari',
+					'mar': 'Maart',
+					'apr': 'April',
+					'may': 'Mei',
+					'jun': 'Juni',
+					'jul': 'Juli',
+					'aug': 'Augustus',
+					'sep': 'September',
+					'oct': 'Oktober',
+					'nov': 'November',
+					'dec': 'December'
+				};
+				const match = dateStr.match(/^(\d+)([a-z]+)(\d+)$/);
+				if (match) {
+					const day = match[1];
+					const month = months[match[2]];
+					return `${day} ${month}`;
+				}
+				return dateStr;
+			}
+			document.addEventListener('DOMContentLoaded', function() {
+				document.querySelectorAll('section.box[data-date]').forEach(section => {
+					const date = section.getAttribute('data-date');
+					const time = section.getAttribute('data-time');
+					const location = section.getAttribute('data-location');
+					const preacher = section.getAttribute('data-preacher');
+					const formattedDate = formatDate(date);
+					const link = section.querySelector('a');
+					if (link) link.setAttribute('data-fragment', `liturgie/html/liturgie.html?date=${date}&time=${encodeURIComponent(time)}&location=${encodeURIComponent(location)}&preacher=${encodeURIComponent(preacher)}`);
+					const p = section.querySelector('p');
+					if (p) p.innerHTML = `${formattedDate} ${time} ${location}<br>${preacher}`;
+				});
+			});
+		</script>
 </html>

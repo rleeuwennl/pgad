@@ -23,12 +23,14 @@
         },
 
         checkForLiturgiePage: function() {
-            // Get current page from URL
-            var path = window.location.pathname;
-            var match = path.match(/litturgie_[^\/]+\.html/);
+            // Get date from URL query parameter
+            var url = new URL(window.location.href);
+            var date = url.searchParams.get('date');
             
-            if (match) {
-                this.currentFile = match[0].replace('html/', '');
+            if (date) {
+                this.currentDate = date;
+                // Set the filename based on the date (used for saving data)
+                this.currentFile = 'litturgie_' + date + '.json';
                 if (SimpleAuth && SimpleAuth.isAuthenticated) {
                     this.showEditor();
                 }
@@ -90,13 +92,12 @@
         },
 
         loadCurrentValues: function() {
-            // Extract filename from current URL or content
-            var path = window.location.pathname;
-            var match = path.match(/litturgie_[^\/]+\.html/);
+            // Extract date from URL query parameter
+            var url = new URL(window.location.href);
+            var date = url.searchParams.get('date');
             
-            if (match) {
-                var htmlFile = match[0];
-                var jsonFile = htmlFile.replace('.html', '.json');
+            if (date) {
+                var jsonFile = 'litturgie_' + date + '.json';
                 
                 // Fetch JSON data
                 $.ajax({

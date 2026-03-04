@@ -3,8 +3,7 @@
     'use strict';
 
     window.LiturgieDataLoader = {
-        loadData: function(htmlFilename) {
-            var jsonFilename = htmlFilename.replace('.html', '.json');
+        loadData: function(jsonFilename) {
             var jsonUrl = '/liturgie/json/' + jsonFilename;
 
             $.ajax({
@@ -71,10 +70,11 @@
     // Auto-load on document ready if jQuery is available
     if (typeof jQuery !== 'undefined') {
         $(document).ready(function() {
-            var path = window.location.pathname;
-            var match = path.match(/litturgie_[^\/]+\.html/);
-            if (match) {
-                LiturgieDataLoader.loadData(match[0]);
+            var url = new URL(window.location.href);
+            var date = url.searchParams.get('date');
+            if (date) {
+                var jsonFilename = 'litturgie_' + date + '.json';
+                LiturgieDataLoader.loadData(jsonFilename);
             }
         });
     }

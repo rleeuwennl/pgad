@@ -1,4 +1,14 @@
 // Common liturgie data loading and application logic
+// Automatically set LITURGIE_JSON_FILE based on current URL if not already defined
+if (typeof LITURGIE_JSON_FILE === 'undefined') {
+    var url = new URL(window.location.href);
+    var date = url.searchParams.get('date');
+    
+    if (date) {
+        LITURGIE_JSON_FILE = '/liturgie/json/litturgie_' + date + '.json';
+    }
+}
+
 var liturgieData = {youtubeInsluit: "", pdfFile: ""};
 
 function applyLiturgieData() {
