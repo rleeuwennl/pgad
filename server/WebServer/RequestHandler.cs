@@ -290,6 +290,85 @@ public class RequestHandler : DelegatingHandler
         return Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound));
     }
 
+    private Task<HttpResponseMessage> HandleSitemap(HttpRequestMessage request)
+    {
+        try
+        {
+            var sitemapXml = GenerateSitemapXml();
+            var response = new HttpResponseMessage();
+            response.Content = new StringContent(sitemapXml);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
+            return Task.FromResult(response);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Sitemap generation error: " + ex.Message);
+            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.InternalServerError));
+        }
+    }
+
+    private string GenerateSitemapXml()
+    {
+        var sitemapBuilder = new System.Text.StringBuilder();
+        sitemapBuilder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        sitemapBuilder.AppendLine("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+
+        // Add homepage
+        sitemapBuilder.AppendLine("  <url>");
+        sitemapBuilder.AppendLine("    <loc>https://pgad.dsea.nl/</loc>");
+        sitemapBuilder.AppendLine("    <lastmod>" + DateTime.Now.ToString("yyyy-MM-dd") + "</lastmod>");
+        sitemapBuilder.AppendLine("    <changefreq>weekly</changefreq>");
+        sitemapBuilder.AppendLine("    <priority>1.0</priority>");
+        sitemapBuilder.AppendLine("  </url>");
+
+        // Add all HTML pages from html/ directory
+        var htmlDir = @"c:/pgad/html";
+        if (Directory.Exists(htmlDir))
+        {
+            var htmlFiles = Directory.GetFiles(htmlDir, "*.html");
+            foreach (var htmlFile in htmlFiles.OrderBy(f => f))
+            {
+                var fileName = Path.GetFileName(htmlFile);
+                var lastModified = File.GetLastWriteTime(htmlFile).ToString("yyyy-MM-dd");
+                var priority = GetPagePriority(fileName);
+                var changeFreq = GetChangeFrequency(fileName);
+
+                sitemapBuilder.AppendLine("  <url>");
+                sitemapBuilder.AppendLine("    <loc>https://pgad.dsea.nl/html/" + fileName + "</loc>");
+                sitemapBuilder.AppendLine("    <lastmod>" + lastModified + "</lastmod>");
+                sitemapBuilder.AppendLine("    <changefreq>" + changeFreq + "</changefreq>");
+                sitemapBuilder.AppendLine("    <priority>" + priority.ToString("0.0") + "</priority>");
+                sitemapBuilder.AppendLine("  </url>");
+            }
+        }
+
+        sitemapBuilder.AppendLine("</urlset>");
+        return sitemapBuilder.ToString();
+    }
+
+    private double GetPagePriority(string fileName)
+    {
+        // Define priorities based on page importance
+        var highPriorityPages = new[] { "contact.html", "missie-visie.html" };
+        var mediumPriorityPages = new[] { "kerkenraad.html", "moderamen.html", "pastoraalteam.html", "diaconaat.html", "cantorij.html", "over-vieren.html", "zending.html", "voorgangers.html" };
+        var lowPriorityPages = new[] { "cvk-bergroting-en-jaarrekeningen.html", "decleratie-formulier.html", "kerkbalans.html", "tarieven-en-betalingen.html", "verhuur-aanhanger.html", "hans-de-booij.html" };
+
+        if (highPriorityPages.Contains(fileName)) return 0.9;
+        if (mediumPriorityPages.Contains(fileName)) return 0.8;
+        if (lowPriorityPages.Contains(fileName)) return 0.5;
+
+        return 0.7; // Default priority
+    }
+
+    private string GetChangeFrequency(string fileName)
+    {
+        // Define change frequencies based on content type
+        var yearlyPages = new[] { "cvk-bergroting-en-jaarrekeningen.html", "decleratie-formulier.html", "kerkbalans.html", "tarieven-en-betalingen.html", "verhuur-aanhanger.html", "gebouw-galluskerk.html", "gebouw-martinikerk.html", "perspective.html", "beleidsplan-cvk.html", "college-van-kerkrentmeesters.html" };
+
+        if (yearlyPages.Contains(fileName)) return "yearly";
+        return "monthly"; // Default to monthly for most pages
+    }
+
     private Task<HttpResponseMessage> HandleRootIndex(HttpRequestMessage request)
     {
         string countersFile = "counters.txt";
@@ -401,6 +480,18 @@ public class RequestHandler : DelegatingHandler
                 return HandleRootIndex(request);
             }
 
+            // Handle sitemap.xml request
+            if (line == "/sitemap.xml")
+            {
+                return HandleSitemap(request);
+            }
+
+            // Handle robots.txt request
+            if (line == "/robots.txt")
+            {
+                return GetFile("/robots.txt", "text/plain");
+            }
+
             // All .html requests: serve the fragment only when explicitly asked; otherwise serve shell
             if (Path.GetExtension(line) == ".html")
             {
@@ -423,7 +514,8 @@ public class RequestHandler : DelegatingHandler
                 {
                     case ".css": return GetFile(line, "text/css");
                     case ".js": return GetFile(line, "text/jscript");
-                    case ".txt": return GetFile(line, "text/html");
+                    case ".txt": return GetFile(line, "text/plain");
+                    case ".xml": return GetFile(line, "application/xml");
                     case ".ico": return GetFile(line, "image/x-icon");
                     case ".jpg": return GetFile(line, "image/jpeg");
                     case ".png": return GetFile(line, "image/png");
