@@ -1,3 +1,31 @@
+https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe
+python -m pip install certbot-dns-desec
+
+
+
+Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.Subject -like "*pgad.dsea.nl*" } | Remove-Item
+certutil -store my
+certutil -delstore my 24a3f8c1a073783ece7805372c1f39ccea0da225
+
+Import-PfxCertificate -FilePath "pgad.dsea.nl.pfx" `
+>>     -CertStoreLocation Cert:\LocalMachine\My `
+>>     -Password (Read-Host -AsSecureString)
+
+
+certbot certonly --standalone -d certbot certonly ^  --manual ^  --preferred-challenges http ^  -d pgad.dsea.nl
+openssl pkcs12 -export \
+  -out pgad.dsea.nl.pfx \
+  -inkey privkey.pem \
+  -in cert.pem \
+  -certfile chain.pem
+
+powershell:
+  (Get-PfxCertificate -FilePath .\pgad.dsea.nl.pfx ).Thumbprint
+Output: 731D6C40A02977F9F52FB1CDE65BD6D2F8613AD5
+  netsh
+
+===========================================================================================================================
+
 The pgad.dsea.nl certificate is located at https://encryptssl.com/dashboard
 
 

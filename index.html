@@ -6,15 +6,125 @@
 -->
 <html>
 	<head>
-		<title>Protestantse Gemeente Angerlo-Doesburg</title>
+		<title>Protestantse Gemeente Angerlo-Doesburg - Hervormde Kerk in Gelderland</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Welkom bij de Protestantse Gemeente Angerlo-Doesburg. Ontdek onze diensten, gemeenschap en activiteiten in de Martinikerk en Galluskerk. Samen geloven, groeien en dienen." />
+		<meta name="keywords" content="kerk, protestantse gemeente, angerlo, doesburg, hervormd, christelijk, geloof, diensten, gemeenschap, martinikerk, galluskerk" />
+		<meta name="author" content="Protestantse Gemeente Angerlo-Doesburg" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://pgad.dsea.nl/" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://pgad.dsea.nl/" />
+		<meta property="og:title" content="Protestantse Gemeente Angerlo-Doesburg" />
+		<meta property="og:description" content="Welkom bij de Protestantse Gemeente Angerlo-Doesburg. Ontdek onze diensten, gemeenschap en activiteiten in de Martinikerk en Galluskerk." />
+		<meta property="og:image" content="https://pgad.dsea.nl/images/kerk-logo.jpg" />
+		<meta property="og:site_name" content="Protestantse Gemeente Angerlo-Doesburg" />
+		<meta property="og:locale" content="nl_NL" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://pgad.dsea.nl/" />
+		<meta property="twitter:title" content="Protestantse Gemeente Angerlo-Doesburg" />
+		<meta property="twitter:description" content="Welkom bij de Protestantse Gemeente Angerlo-Doesburg. Ontdek onze diensten, gemeenschap en activiteiten." />
+		<meta property="twitter:image" content="https://pgad.dsea.nl/images/kerk-logo.jpg" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+		<!-- Preload critical resources -->
+		<link rel="preload" href="/assets/css/main.css" as="style">
+		<link rel="preload" href="/assets/js/main.js" as="script">
+		<link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+		<!-- Stylesheets -->
 		<base href="/" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<link rel="stylesheet" href="/assets/css/auth-modal.css" />
 		<link rel="stylesheet" href="/assets/css/liturgie-editor.css" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Church",
+			"name": "Protestantse Gemeente Angerlo-Doesburg",
+			"description": "Hervormde kerk gemeenschap in Angerlo en Doesburg met diensten in de Martinikerk en Galluskerk",
+			"url": "https://pgad.dsea.nl",
+			"logo": "https://pgad.dsea.nl/images/kerk-logo.jpg",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Angerlo en Doesburg",
+				"addressRegion": "Gelderland",
+				"addressCountry": "NL"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"contactType": "customer service",
+				"url": "https://pgad.dsea.nl/html/contact.html"
+			},
+			"sameAs": [
+				"https://www.facebook.com/pg/protestantsegemeenteangerlodoesburg",
+				"https://www.instagram.com/pg_ad"
+			],
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "Kerkdiensten",
+				"itemListElement": [
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Zondagsdienst Martinikerk",
+							"description": "Wekelijkse kerkdienst in de Martinikerk",
+							"areaServed": {
+								"@type": "Place",
+								"name": "Martinikerk Doesburg"
+							}
+						}
+					},
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Zondagsdienst Galluskerk",
+							"description": "Wekelijkse kerkdienst in de Galluskerk",
+							"areaServed": {
+								"@type": "Place",
+								"name": "Galluskerk Angerlo"
+							}
+						}
+					}
+				]
+			},
+			"event": [
+				{
+					"@type": "Event",
+					"name": "Zondagsdienst Martinikerk",
+					"startDate": "2026-03-01T10:00:00+01:00",
+					"endDate": "2026-03-01T11:30:00+01:00",
+					"location": {
+						"@type": "Place",
+						"name": "Martinikerk",
+						"address": {
+							"@type": "PostalAddress",
+							"streetAddress": "Kerkstraat 4",
+							"addressLocality": "Doesburg",
+							"addressRegion": "Gelderland",
+							"addressCountry": "NL"
+						}
+					},
+					"performer": {
+						"@type": "Person",
+						"name": "ds. Elise Wijnands"
+					}
+				}
+			]
+		}
+		</script>
 	</head>
 	<body class="right-sidebar is-preload">
 		<div id="page-wrapper">
@@ -141,8 +251,8 @@
 													<header>
 														<h2>Viering Martinikerk</h2>
 													</header>
-													<a href="#" class="image featured"><img src="images/ds_elise_wijnands.jpg" alt="" /></a>
-													<p></p>
+													<a href="#" class="image featured"><img src="images/ds_elise_wijnands.jpg" alt="Ds. Elise Wijnands - voorganger Protestantse Gemeente Angerlo-Doesburg" /></a>
+													<p>Zondag 1 maart 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -151,8 +261,8 @@
 													<header>
 														<h2>Oecumenische Viering Martinikerk</h2>
 													</header>
-													<a href="#" class="image featured"><img src="images/litturgie_martinikerk.jpg" alt="" /></a>
-													<p></p>
+													<a href="#" class="image featured"><img src="images/litturgie_martinikerk.jpg" alt="Martinikerk - Protestantse Gemeente Angerlo-Doesburg" /></a>
+													<p>Zondag 8 maart 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 											<div class="col-6 col-12-small"   >
@@ -160,8 +270,8 @@
 													<header>
 														<h2>Viering Galluskerk</h2>
 													</header>
-													<a href="#" class="image featured"><img src="images/ds_bert_bomer.jpg" alt="" /></a>
-													<p></p>
+													<a href="#" class="image featured"><img src="images/ds_bert_bomer.jpg" alt="Ds. Bert Bomer - voorganger Protestantse Gemeente Angerlo-Doesburg" /></a>
+													<p>Zondag 15 maart 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -170,8 +280,8 @@
 													<header>
 														<h2>Viering Galluskerk</h2>
 													</header>
-													<a href="#" class="image featured"><img src="images/drs_rini_van_dijkhuizen.jpg" alt="" /></a>
-													<p></p>
+													<a href="#" class="image featured"><img src="images/drs_rini_van_dijkhuizen.jpg" alt="Drs. Rini van Dijkhuizen - voorganger Protestantse Gemeente Angerlo-Doesburg" /></a>
+													<p>Zondag 22 maart 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -180,8 +290,8 @@
 													<header>
 														<h2>Viering Galluskerk</h2>
 													</header>
-													<a href="#" class="image featured"><img src="images/galluskerk.jpg" alt="" /></a>
-													<p></p>
+													<a href="#" class="image featured"><img src="images/galluskerk.jpg" alt="Galluskerk - Protestantse Gemeente Angerlo-Doesburg" /></a>
+													<p>Zondag 29 maart 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -359,8 +469,10 @@
 			<script src="/assets/js/browser.min.js"></script>
 			<script src="/assets/js/breakpoints.min.js"></script>
 			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>		<script src="/assets/js/liturgie-loader.js"></script>			<script src="/assets/js/simpleauth.js"></script>
-		<script src="/assets/js/liturgie-editor.js"></script>
+			<script src="/assets/js/main.js"></script>
+			<script src="/assets/js/liturgie-loader.js"></script>
+			<script src="/assets/js/simpleauth.js"></script>
+			<script src="/assets/js/liturgie-editor.js" defer></script>
 		<script>
 			function formatDate(dateStr) {
 				const months = {

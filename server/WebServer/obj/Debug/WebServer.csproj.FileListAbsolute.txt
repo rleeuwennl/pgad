@@ -21,7 +21,6 @@ C:\pgad\server\Webserver\bin\Debug\MimeKit.dll.config
 C:\pgad\server\Webserver\bin\Debug\Newtonsoft.Json.xml
 C:\pgad\server\Webserver\bin\Debug\System.Web.Http.xml
 C:\pgad\server\Webserver\bin\Debug\System.Web.Http.SelfHost.xml
-C:\pgad\server\Webserver\obj\Debug\WebServer.csproj.AssemblyReference.cache
 C:\pgad\server\Webserver\obj\Debug\Genius2.Properties.Resources.resources
 C:\pgad\server\Webserver\obj\Debug\WebServer.csproj.GenerateResource.cache
 C:\pgad\server\Webserver\obj\Debug\WebServer.csproj.CoreCompileInputs.cache
@@ -30,3 +29,4 @@ C:\pgad\server\Webserver\obj\Debug\RemoteInvoker.application
 C:\pgad\server\Webserver\obj\Debug\WebServer.csproj.CopyComplete
 C:\pgad\server\Webserver\obj\Debug\RemoteInvoker.exe
 C:\pgad\server\Webserver\obj\Debug\RemoteInvoker.pdb
+C:\pgad\server\Webserver\obj\Debug\WebServer.csproj.AssemblyReference.cache

@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 // see: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/http-message-handlers
 public class RequestHandler : DelegatingHandler
@@ -90,7 +91,7 @@ public class RequestHandler : DelegatingHandler
             }
             else
             {
-                return null;
+                //return null;
             }
         }
 
@@ -296,14 +297,27 @@ public class RequestHandler : DelegatingHandler
         {
             var sitemapXml = GenerateSitemapXml();
             var response = new HttpResponseMessage();
-            response.Content = new StringContent(sitemapXml);
+            response.Content = new StringContent(sitemapXml, System.Text.Encoding.UTF8, "application/xml");
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
             return Task.FromResult(response);
         }
         catch (Exception ex)
         {
             Console.WriteLine("Sitemap generation error: " + ex.Message);
-            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.InternalServerError));
+            // Return a basic valid sitemap on error
+            var fallbackSitemap = @"<?xml version=""1.0"" encoding=""UTF-8""?>
+<urlset xmlns=""http://www.sitemaps.org/schemas/sitemap/0.9"">
+  <url>
+    <loc>https://pgad.dsea.nl/</loc>
+    <lastmod>" + DateTime.Now.ToString("yyyy-MM-dd") + @"</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>";
+            var response = new HttpResponseMessage();
+            response.Content = new StringContent(fallbackSitemap, System.Text.Encoding.UTF8, "application/xml");
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
+            return Task.FromResult(response);
         }
     }
 
@@ -329,6 +343,15 @@ public class RequestHandler : DelegatingHandler
             foreach (var htmlFile in htmlFiles.OrderBy(f => f))
             {
                 var fileName = Path.GetFileName(htmlFile);
+
+                // Skip Google verification files and other non-content files
+                if (fileName.StartsWith("google") || fileName.Contains("verification"))
+                    continue;
+
+                // Validate filename (should not contain special characters that break XML)
+                if (string.IsNullOrWhiteSpace(fileName) || fileName.Contains("<") || fileName.Contains(">"))
+                    continue;
+
                 var lastModified = File.GetLastWriteTime(htmlFile).ToString("yyyy-MM-dd");
                 var priority = GetPagePriority(fileName);
                 var changeFreq = GetChangeFrequency(fileName);
@@ -337,7 +360,7 @@ public class RequestHandler : DelegatingHandler
                 sitemapBuilder.AppendLine("    <loc>https://pgad.dsea.nl/html/" + fileName + "</loc>");
                 sitemapBuilder.AppendLine("    <lastmod>" + lastModified + "</lastmod>");
                 sitemapBuilder.AppendLine("    <changefreq>" + changeFreq + "</changefreq>");
-                sitemapBuilder.AppendLine("    <priority>" + priority.ToString("0.0") + "</priority>");
+                sitemapBuilder.AppendLine("    <priority>" + priority.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "</priority>");
                 sitemapBuilder.AppendLine("  </url>");
             }
         }
@@ -480,16 +503,33 @@ public class RequestHandler : DelegatingHandler
                 return HandleRootIndex(request);
             }
 
-            // Handle sitemap.xml request
-            if (line == "/sitemap.xml")
+            // Handle sitemap.xml request (with or without trailing slash)
+            if (line == "/sitemap.xml" || line == "/sitemap.xml/")
             {
                 return HandleSitemap(request);
             }
 
-            // Handle robots.txt request
-            if (line == "/robots.txt")
+            // Handle robots.txt request (with or without trailing slash)
+            if (line == "/robots.txt" || line == "/robots.txt/")
             {
                 return GetFile("/robots.txt", "text/plain");
+            }
+
+            // Let ACME challenge files be served from /.well-known/acme-challenge/
+            if (line.StartsWith("/.well-known/acme-challenge/"))
+            {
+                return GetFile(line, "text/plain");
+            }
+
+            // Allow serving HTML verification files from root (Google Search Console, Bing, etc.)
+            if (Path.GetExtension(line) == ".html" && !line.StartsWith("/html/"))
+            {
+                // Check if file exists in root for verification files
+                string filePath = @"c:/pgad" + line;
+                if (System.IO.File.Exists(filePath))
+                {
+                    return GetFile(line, "text/html");
+                }
             }
 
             // All .html requests: serve the fragment only when explicitly asked; otherwise serve shell
@@ -503,7 +543,8 @@ public class RequestHandler : DelegatingHandler
                 }
 
                 // Serve shell (index.html) so client-side loader can inject fragment
-                return GetFile("/index.html", "text/html");
+                //return GetFile("/index.html", "text/html");
+                return GetFile(line, "text/html");
             }
 
             if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/") || line.StartsWith("/json/") || line.StartsWith("/liturgie/"))
