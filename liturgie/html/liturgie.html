@@ -55,7 +55,10 @@
             
             // Update title
             var titleText = formattedDate;
-            if (time) titleText += ' ' + time + ' uur';
+            if (time) {
+                var normalizedTime = time.replace(/\s*uur\s*$/i, '').trim();
+                titleText += ' ' + normalizedTime + ' uur';
+            }
             var titleEl = document.getElementById('liturgie-title');
             if (titleEl) titleEl.textContent = titleText;
             

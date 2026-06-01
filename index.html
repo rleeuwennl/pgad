@@ -274,7 +274,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/litturgie_galluskerk.jpg" /></a>
-													<p>Zondag 28 juni 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -288,7 +287,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/oecumenen.jpg" /></a>
-													<p>Zondag 21 juni 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -303,7 +301,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/litturgie_martinikerk.jpg" /></a>
-													<p>Zondag 14 juni 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -318,7 +315,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/ds_elise_wijnands.jpg" /></a>
-													<p>Zondag 7 juni 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -335,7 +331,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/ds_jolande_van_baardewijk.jpg" /></a>
-													<p>Zondag 31 mei 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 										
@@ -350,7 +345,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/pinksteren.jpg" /></a>
-													<p>Zondag 24 mei 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -365,7 +359,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/dhr_rené_wichers-kaat.jpg" /></a>
-													<p>Zondag 17 mei 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -380,7 +373,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/hemelvaartsdag.jpg" /></a>
-													<p>Zondag 14 mei 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -396,7 +388,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/ds_bert_bomer.jpg" /></a>
-													<p>Zondag 10 mei 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -411,7 +402,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/doopdienst.jpg" /></a>
-													<p>Zondag 3 mei 2026 - 10:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -428,7 +418,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/ds_klaas_bakker.jpg" /></a>
-													<p>Zondag 26 april 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -445,7 +434,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/ds. roel van oosten.jpg" /></a>
-													<p>Zondag 19 april 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -460,7 +448,6 @@
 													</header>
 													<a href="#" class="image featured">
 													<img src="images/grandia.jpg" /></a>
-													<p>Zondag 12 april 2026 - 10:00 uur - Galluskerk</p>
 												</section>
 											</div>
 
@@ -471,7 +458,6 @@
 														<h2>Pasen met ontbijt</h2>
 													</header>
 													<a href="#" class="image featured"><img src="images/pasen.jpg" /></a>
-													<p>Zondag 5 april 2026 - 9:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -481,7 +467,6 @@
 														<h2>Stille Zaterdag</h2>
 													</header>
 													<a href="#" class="image featured"><img src="images/stille_zaterdag.jpg" alt="Stille Zaterdag" /></a>
-													<p>Zaterdag 4 april 2026 - 22:00 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -491,7 +476,6 @@
 														<h2>Goede Vrijdag</h2>
 													</header>
 													<a href="#" class="image featured"><img src="images/goede_vrijdag.jpg" alt="Goede Vrijdag" /></a>
-													<p>Vrijdag 3 april 2026 - 19:30 uur - Martinikerk</p>
 												</section>
 											</div>
 
@@ -501,7 +485,6 @@
 														<h2>Witte Donderdag</h2>
 													</header>
 													<a href="#" class="image featured"><img src="images/avond_maal.jpg" alt="Avond maal - Protestantse Gemeente Angerlo-Doesburg" /></a>
-													<p>Donderdag 2 april 2026 - 19:30 uur - Martinikerk</p>
 												</section>
 											</div>
 										</div>
@@ -682,40 +665,66 @@
 			<script src="/assets/js/simpleauth.js"></script>
 			<script src="/assets/js/liturgie-editor.js" defer></script>
 		<script>
-			function formatDate(dateStr) {
+			function parseDateString(dateStr) {
 				const months = {
-					'jan': 'Januari',
-					'feb': 'Februari',
-					'mar': 'Maart',
-					'apr': 'April',
-					'may': 'Mei',
-					'jun': 'Juni',
-					'jul': 'Juli',
-					'aug': 'Augustus',
-					'sep': 'September',
-					'oct': 'Oktober',
-					'nov': 'November',
-					'dec': 'December'
+					'jan': 1,
+					'feb': 2,
+					'mar': 3,
+					'apr': 4,
+					'may': 5,
+					'jun': 6,
+					'jul': 7,
+					'aug': 8,
+					'sep': 9,
+					'oct': 10,
+					'nov': 11,
+					'dec': 12
 				};
-				const match = dateStr.match(/^(\d+)([a-z]+)(\d+)$/);
-				if (match) {
-					const day = match[1];
-					const month = months[match[2]];
-					return `${day} ${month}`;
+				const match = dateStr.match(/^(\d{1,2})([a-z]+)(\d{4})$/i);
+				if (!match) {
+					return null;
 				}
-				return dateStr;
+				const day = parseInt(match[1], 10);
+				const month = months[match[2].toLowerCase()];
+				const year = parseInt(match[3], 10);
+				if (!month || isNaN(day) || isNaN(year)) {
+					return null;
+				}
+				return new Date(year, month - 1, day);
 			}
+
+			function formatDutchDate(dateStr) {
+				const dateObj = parseDateString(dateStr);
+				if (!dateObj) {
+					return dateStr;
+				}
+
+				const weekdayNames = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
+				const monthNames = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+
+				const weekday = weekdayNames[dateObj.getDay()];
+				const day = dateObj.getDate();
+				const month = monthNames[dateObj.getMonth()];
+				const year = dateObj.getFullYear();
+
+				return `${weekday} ${day} ${month} ${year}`;
+			}
+
 			document.addEventListener('DOMContentLoaded', function() {
 				document.querySelectorAll('section.box[data-date]').forEach(section => {
 					const date = section.getAttribute('data-date');
 					const time = section.getAttribute('data-time');
 					const location = section.getAttribute('data-location');
 					const preacher = section.getAttribute('data-preacher');
-					const formattedDate = formatDate(date);
+					const formattedDate = formatDutchDate(date);
 					const link = section.querySelector('a');
 					if (link) link.setAttribute('data-fragment', `liturgie/html/liturgie.html?date=${date}&time=${encodeURIComponent(time)}&location=${encodeURIComponent(location)}&preacher=${encodeURIComponent(preacher)}`);
-					const p = section.querySelector('p');
-					if (p) p.innerHTML = `${formattedDate} ${time} ${location}<br>${preacher}`;
+					let p = section.querySelector('p');
+					if (!p) {
+						p = document.createElement('p');
+						section.appendChild(p);
+					}
+					p.innerHTML = `${formattedDate} - ${time} - ${location}<br>${preacher}`;
 				});
 			});
 		</script>
