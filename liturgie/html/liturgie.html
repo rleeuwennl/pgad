@@ -45,12 +45,24 @@
                 'may': 'Mei', 'jun': 'Juni', 'jul': 'Juli', 'aug': 'Augustus',
                 'sep': 'September', 'oct': 'Oktober', 'nov': 'November', 'dec': 'December'
             };
+            var monthNumbers = {
+                'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3,
+                'may': 4, 'jun': 5, 'jul': 6, 'aug': 7,
+                'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11
+            };
+            var weekdayNames = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
             var match = date.match(/^(\d+)([a-z]+)(\d+)$/);
             var formattedDate = date;
             if (match) {
-                var day = match[1];
-                var month = months[match[2]];
-                formattedDate = day + ' ' + month;
+                var day = parseInt(match[1], 10);
+                var monthKey = match[2].toLowerCase();
+                var year = parseInt(match[3], 10);
+                var monthName = months[monthKey];
+                var monthIndex = monthNumbers[monthKey];
+                if (!isNaN(day) && !isNaN(year) && monthName !== undefined && monthIndex !== undefined) {
+                    var dateObj = new Date(year, monthIndex, day);
+                    formattedDate = weekdayNames[dateObj.getDay()] + ' ' + day + ' ' + monthName;
+                }
             }
             
             // Update title
