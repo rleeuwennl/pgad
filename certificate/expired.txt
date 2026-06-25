@@ -1,0 +1,88 @@
+================================================================================
+  CERTIFICATE RENEWAL GUIDE - pgad.dsea.nl
+  Last renewed: June 18, 2026
+  Next expiry:  September 16, 2026
+================================================================================
+
+REQUIREMENTS
+------------
+- Run VS Code / PowerShell as ADMINISTRATOR
+- Port 80 must be reachable from the internet (http://pgad.dsea.nl must respond)
+- The .NET web server must be running (it serves the ACME challenge on port 80)
+- Certbot installed at: C:\Users\rleeu\AppData\Local\Programs\Python\Python310\Scripts\certbot.exe, 
+    install:https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe
+    in admin cmd :
+        python -m pip install certbot
+        python -m pip install certbot-dns-desec
+
+- OpenSSL available at: C:\Program Files\Git\usr\bin\openssl.exe
+
+BACKGROUND
+----------
+The certificate is a Let's Encrypt cert issued via certbot webroot method.
+The web server already has a route for /.well-known/acme-challenge/* so
+Let's Encrypt can verify domain ownership without needing to bind port 80.
+
+Certbot stores the renewed cert here:
+  Certificate : C:\Certbot\live\pgad.dsea.nl\fullchain.pem
+  Private key : C:\Certbot\live\pgad.dsea.nl\privkey.pem
+  Cert only   : C:\Certbot\live\pgad.dsea.nl\cert.pem
+
+PFX password : Anneloes123!
+App GUID     : {b4cda6bb-daf4-4db8-af9a-02d52e72a83d}
+
+
+STEP-BY-STEP RENEWAL
+---------------------
+
+STEP 1 — Make sure the .NET web server is running
+  The server must be up so it can serve the ACME challenge file.
+  Open http://pgad.dsea.nl in a browser and confirm the site loads.
+
+STEP 2 — Run certbot to issue a new certificate
+  Open an ADMIN PowerShell and run:
+
+  certbot certonly --webroot -w "c:\pgad" -d pgad.dsea.nl --non-interactive --agree-tos --email rleeuwen@dsea.nl
+
+  Expected output:
+     Certificate is saved at: C:\Certbot\live\pgad.dsea.nl\fullchain.pem
+     Key is saved at:         C:\Certbot\live\pgad.dsea.nl\privkey.pem
+     This certificate expires on 2026-09-23.
+     These files will be updated when the certificate renews.
+ 
+
+STEP 3 — Build a new PFX file from the new certificate
+
+    cd c:\pgad\certificate
+    & "C:\Program Files\Git\usr\bin\openssl.exe" pkcs12 -export -out pgad.dsea.nl.pfx -inkey "C:\Certbot\live\pgad.dsea.nl\privkey.pem" -in "C:\Certbot\live\pgad.dsea.nl\fullchain.pem" -passout pass:Anneloes123!
+
+STEP 4 — Get the new certificate thumbprint (SHA1)
+
+    & "C:\Program Files\Git\usr\bin\openssl.exe" x509 -in "C:\Certbot\live\pgad.dsea.nl\fullchain.pem" -fingerprint -sha1 -noout
+
+  Note the fingerprint, e.g.: sha1 Fingerprint=BD:85:A0:7E:0D:D8:94:7C:FF:2C:90:09:B8:D2:4E:52:B7:43:4D:96
+  Remove the colons to get the certhash, e.g.: BD85A07E0DD8947CFF2C9009B8D24E52B7434D96
+
+STEP 5 — Import the PFX into the Windows certificate store
+
+    certutil -p "Anneloes123!" -importPFX c:\pgad\certificate\pgad.dsea.nl.pfx
+
+  Expected output: "Certificate added to store" or "already in store" (both are fine).
+
+STEP 6 — Remove the old SSL binding and add the new one
+
+    netsh http delete sslcert ipport=0.0.0.0:443
+    netsh http add sslcert ipport=0.0.0.0:443 certhash=BD85A07E0DD8947CFF2C9009B8D24E52B7434D96 appid="{b4cda6bb-daf4-4db8-af9a-02d52e72a83d}"
+
+  Replace <NEW_THUMBPRINT_NO_COLONS> with the value from Step 4.
+
+STEP 7 — Copy new cert files into the workspace (for backup/reference)
+
+    Copy-Item "C:\Certbot\live\pgad.dsea.nl\fullchain.pem" "c:\pgad\certificate\pgad.dsea.nl-fullchain.crt" -Force
+    Copy-Item "C:\Certbot\live\pgad.dsea.nl\privkey.pem"   "c:\pgad\certificate\pgad.dsea.nl.key" -Force
+    Copy-Item "C:\Certbot\live\pgad.dsea.nl\cert.pem"      "c:\pgad\certificate\pgad.dsea.nl.crt" -Force
+
+STEP 8 — Restart the .NET web server
+  Restart the server process so it picks up the new certificate.
+  Verify at https://pgad.dsea.nl — the browser should show a valid cert.
+

@@ -21,7 +21,7 @@ openssl pkcs12 -export \
 
 powershell:
   (Get-PfxCertificate -FilePath .\pgad.dsea.nl.pfx ).Thumbprint
-Output: 731D6C40A02977F9F52FB1CDE65BD6D2F8613AD5
+Output: BD85A07E0DD8947CFF2C9009B8D24E52B7434D96
   netsh
 
 ===========================================================================================================================
@@ -50,7 +50,7 @@ PFX password Anneloes123!
 * In Powershell, go to netsh mode:
   netsh
   http delete sslcert ipport=0.0.0.0:443
-  http add sslcert ipport=0.0.0.0:443 certhash=2b80fa893ffa9a0a32e3a7f6a32f1925a5896cf7 appid={b4cda6bb-daf4-4db8-af9a-02d52e72a83d}
+  http add sslcert ipport=0.0.0.0:443 certhash=BD85A07E0DD8947CFF2C9009B8D24E52B7434D96 appid={b4cda6bb-daf4-4db8-af9a-02d52e72a83d}
   exit
 
 * In a browser open:
