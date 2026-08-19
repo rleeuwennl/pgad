@@ -16,8 +16,8 @@ namespace RemoteInvoker
 
             Uri baseAddres;
 
-
-            baseAddres = new Uri("https://localhost:443");
+            baseAddres = new Uri("http://localhost:8080");
+            //baseAddres = new Uri("https://localhost:443");
             //baseAddres = new Uri("http://localhost:80");
 
             // Set up server configuration
