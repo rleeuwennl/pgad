@@ -543,8 +543,7 @@ public class RequestHandler : DelegatingHandler
                 }
 
                 // Serve shell (index.html) so client-side loader can inject fragment
-                //return GetFile("/index.html", "text/html");
-                return GetFile(line, "text/html");
+                return GetFile("/index.html", "text/html");
             }
 
             if (line.StartsWith("/images/") || line.StartsWith("/assets/") || line.StartsWith("/pdf/") || line.StartsWith("/html/") || line.StartsWith("/json/") || line.StartsWith("/liturgie/"))
