@@ -118,9 +118,9 @@
                     SimpleAuth.showAuthUI();
                     SimpleAuth.startInactivityTimer();
                     console.log('Authorized token: ' + SimpleAuth.token);
-                    // Refresh the page after successful login
+                    // Navigate to the home page after successful login
                     setTimeout(function() {
-                        location.reload();
+                        window.location.href = '/';
                     }, 300);
                 } else {
                     $('#pgad-login-error').text('Login failed').show();
@@ -150,9 +150,9 @@
                 SimpleAuth.isAuthenticated = false;
                 localStorage.removeItem('pgad_token');
                 SimpleAuth.hideAuthUI();
-                // Refresh the page after logout
+                // Navigate to the home page after logout
                 setTimeout(function() {
-                    location.reload();
+                    window.location.href = '/';
                 }, 300);
             });
         },
