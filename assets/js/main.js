@@ -35,6 +35,57 @@
 		});
 	});
 
+	// Copy email address to clipboard when a mailto link is clicked
+	(function(){
+		var toastTimer;
+
+		function showToast(message){
+			var toast = document.getElementById('copy-toast');
+			if (!toast) {
+				toast = document.createElement('div');
+				toast.id = 'copy-toast';
+				toast.setAttribute('role', 'status');
+				toast.style.cssText = 'position:fixed;left:50%;bottom:2em;transform:translateX(-50%);' +
+					'background:#333;color:#fff;padding:0.75em 1.25em;border-radius:6px;z-index:100000;' +
+					'box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:opacity 0.3s;';
+				document.body.appendChild(toast);
+			}
+			toast.textContent = message;
+			toast.style.opacity = '1';
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(function(){ toast.style.opacity = '0'; }, 2500);
+		}
+
+		function copyText(text){
+			if (navigator.clipboard && window.isSecureContext) {
+				return navigator.clipboard.writeText(text);
+			}
+			return new Promise(function(resolve, reject){
+				var ta = document.createElement('textarea');
+				ta.value = text;
+				ta.style.cssText = 'position:fixed;opacity:0;';
+				document.body.appendChild(ta);
+				ta.select();
+				var ok = false;
+				try { ok = document.execCommand('copy'); } catch (err) {}
+				document.body.removeChild(ta);
+				ok ? resolve() : reject();
+			});
+		}
+
+		document.addEventListener('click', function(e){
+			var link = e.target.closest('a[href^="mailto:"]');
+			if (!link) return;
+			var address = decodeURIComponent(link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0]);
+			e.preventDefault();
+			copyText(address).then(function(){
+				showToast('E-mailadres gekopieerd: ' + address);
+			}, function(){
+				showToast('Kopiëren mislukt. E-mailadres: ' + address);
+			});
+		});
+	})();
+
 	// Fragment loader with History API: load into #content and keep URLs updated
 	(function(){
 		function swapContent(html){
